@@ -33,15 +33,16 @@ namespace CarRental.Models
         public int RentalDays { get; set; }
         
         [StringLength(50)]
-        public string Status { get; set; } = "Pending"; // Pending, Confirmed, Completed, Cancelled
+        public string Status { get; set; } = "Pending"; 
         
         public DateTime BookingDate { get; set; } = DateTime.Now;
         
         public decimal TotalAmount { get; set; }
         
-        // Navigation Properties
+        
         public virtual Vehicle Vehicle { get; set; } = null!;
         public virtual Customer? Customer { get; set; }
-        //bad boy
+        //git Gajan pull checking 
+        
     }
 } 
