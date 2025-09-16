@@ -42,5 +42,6 @@ namespace CarRental.Models
         // Navigation Properties
         public virtual Vehicle Vehicle { get; set; } = null!;
         public virtual Customer? Customer { get; set; }
+        //bad boy
     }
 } 
