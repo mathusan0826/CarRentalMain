@@ -7,3 +7,4 @@ UPDATE Vehicles SET ImageUrl = '/images/Mitsubshi Delica.jpeg' WHERE Name = 'Mit
 UPDATE Vehicles SET ImageUrl = '/images/Toyota Coaster.jpeg' WHERE Name = 'Toyota Coaster';
 UPDATE Vehicles SET ImageUrl = '/images/Jeep Wrangler.jpeg' WHERE Name = 'Jeep Wrangler';
 
+//
