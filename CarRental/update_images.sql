@@ -16,4 +16,3 @@ UPDATE Vehicle SET Imagurl = '/images/NightShade.jpeg' WHERE Name = 'NightShade'
 UPDATE Vehicle SET Imagurl = '/images/Flamingo.jpeg' WHERE Name = 'Flamingo';
 
 
-
