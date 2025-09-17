@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Car Rental Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .admin-sidebar {
+            min-height: 100vh;
+            background-color: #343a40;
+        }
+        .admin-content {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+        .admin-nav-link {
+            color: #adb5bd;
+            padding: 0.75rem 1rem;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .admin-nav-link:hover {
+            color: #fff;
+            background-color: #495057;
+        }
+        .admin-nav-link.active {
+            color: #fff;
+            background-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Admin Sidebar -->
+            <div class="col-md-2 admin-sidebar p-0">
+                <div class="p-3">
+                    <h4 class="text-white mb-4">
+                        <i class="fas fa-user-shield"></i> Admin Panel
+                    </h4>
+                    <nav class="nav flex-column">
+                        <a class="admin-nav-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Dashboard" ? "active" : "")" href="/Admin/Dashboard">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                        <a class="admin-nav-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Vehicles" ? "active" : "")" href="/Admin/Vehicles">
+                            <i class="fas fa-car"></i> Manage Vehicles
+                        </a>
+                        <a class="admin-nav-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Bookings" ? "active" : "")" href="/Admin/Bookings">
+                            <i class="fas fa-calendar-check"></i> Manage Bookings
+                        </a>
+                        <a class="admin-nav-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "ContactMessages" ? "active" : "")" href="/Admin/ContactMessages">
+                            <i class="fas fa-envelope"></i> Contact Messages
+                        </a>
+                        <hr class="text-white">
+                        <a class="admin-nav-link" href="/Admin/Logout">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Admin Content -->
+            <div class="col-md-10 admin-content">
+                <!-- Top Navigation Bar -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+                    <div class="container-fluid">
+                        <span class="navbar-brand mb-0 h1">
+                            Welcome, @Context.Session.GetString("AdminUsername")
+                        </span>
+                        <div class="navbar-nav ms-auto">
+                            <a class="nav-link" href="/" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> View Site
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+                
+                <!-- Main Content -->
+                <div class="p-4">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -97,16 +97,19 @@
                             <span class="badge bg-primary">@vehicle.Type</span>
                             <span class="badge bg-secondary">@vehicle.Seats Seats</span>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <small class="text-muted">
-                                <i class="fas fa-map-marker-alt"></i> 
-                                Location: @(vehicle.Latitude != 0 ? $"{vehicle.Latitude:F4}, {vehicle.Longitude:F4}" : "Not set")
-                            </small>
-                            <small class="text-muted">
-                                <i class="fas fa-clock"></i> 
-                                Updated: @vehicle.LastLocationUpdate.ToString("MMM dd, HH:mm")
-                            </small>
-                        </div>
+                        @if (Context.Session.GetString("AdminUsername") != null)
+                        {
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <small class="text-muted">
+                                    <i class="fas fa-map-marker-alt"></i> 
+                                    Location: @(vehicle.Latitude != 0 ? $"{vehicle.Latitude:F4}, {vehicle.Longitude:F4}" : "Not set")
+                                </small>
+                                <small class="text-muted">
+                                    <i class="fas fa-clock"></i> 
+                                    Updated: @vehicle.LastLocationUpdate.ToString("MMM dd, HH:mm")
+                                </small>
+                            </div>
+                        }
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="badge @(vehicle.IsAvailable ? "bg-success" : "bg-danger")">
                                 @(vehicle.IsAvailable ? "Available" : "Not Available")

@@ -44,6 +44,12 @@ namespace CarRental.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateLocation(int vehicleId, double latitude, double longitude)
         {
+            // Only allow admin users to update location data
+            if (HttpContext.Session.GetString("AdminUsername") == null)
+            {
+                return Unauthorized();
+            }
+
             var success = await _vehicleService.UpdateVehicleLocationAsync(vehicleId, latitude, longitude);
             return Json(new { success });
         }
@@ -51,6 +57,12 @@ namespace CarRental.Controllers
         [HttpGet]
         public async Task<IActionResult> GetVehicleLocation(int vehicleId)
         {
+            // Only allow admin users to access location data
+            if (HttpContext.Session.GetString("AdminUsername") == null)
+            {
+                return Unauthorized();
+            }
+
             var vehicle = await _vehicleService.GetVehicleByIdAsync(vehicleId);
             if (vehicle == null)
             {
