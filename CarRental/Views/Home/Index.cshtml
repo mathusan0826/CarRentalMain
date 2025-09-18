@@ -1,11 +1,11 @@
-@model IEnumerable<CarRental.Models.Vehicle>
+﻿@model IEnumerable<CarRental.Models.Vehicle>
 @{
     ViewData["Title"] = "Home";
 }
 
 <!-- Hero Section -->
-<section class="hero-section text-center">
-    <div class="container">
+@* <section class="hero-section text-center">
+    <div class="container ">
         <h1 class="display-4 mb-4">THE BEST CAR RENTAL SERVICE</h1>
         <p class="lead mb-4">We have a wide variety of cars to suit your needs and budget. Call us and rent a car now.</p>
         <div class="row justify-content-center">
@@ -52,7 +52,85 @@
             </div>
         </div>
     </div>
+</section> *@
+
+
+<section class="hero-section text-center"
+         style="background: #0891b2;
+                position: relative;
+                padding: 120px 0;">
+
+    <!-- Transparent Overlay -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.4);
+                z-index: 1;"></div>
+
+    <!-- Content -->
+    <div class="container position-relative" style="z-index: 2;">
+        <h1 class="display-3 fw-bold text-white mb-3">
+            UNICOM-BOYS RENTAL SERVICE
+        </h1>
+        <p class="lead text-light mb-5">
+            Choose from a wide variety of cars with flexible pricing & premium service.
+        </p>
+
+        <!-- Glassmorphism Card -->
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card shadow-lg border-0 rounded-4"
+                     style="background: rgba(255,255,255,0.15);
+                            backdrop-filter: blur(10px);
+                            border: 1px solid rgba(255,255,255,0.2);">
+                    <div class="card-body p-4">
+                        <h5 class="card-title text-white mb-4">🔍 Find Your Perfect Vehicle</h5>
+                        <div class="row g-4">
+                            <div class="col-md-3">
+                                <label class="form-label text-white">Vehicle Type</label>
+                                <select class="form-select bg-dark text-white border-light" id="vehicleType">
+                                    <option value="">All Types</option>
+                                    <option value="CAR">Car</option>
+                                    <option value="VAN">Van</option>
+                                    <option value="BUS">Bus</option>
+                                    <option value="JEEP">Jeep</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label text-white">Seats</label>
+                                <select class="form-select bg-dark text-white border-light" id="seats">
+                                    <option value="">Any</option>
+                                    <option value="4">4 Seats</option>
+                                    <option value="5">5 Seats</option>
+                                    <option value="7">7 Seats</option>
+                                    <option value="12">12 Seats</option>
+                                    <option value="25">25 Seats</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label text-white">Pick-up Date</label>
+                                <input type="date" class="form-control bg-dark text-white border-light" id="pickupDate">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label text-white">Rental Days</label>
+                                <input type="number" class="form-control bg-dark text-white border-light" id="rentalDays" min="1" max="30" value="1">
+                            </div>
+                        </div>
+                        <button class="btn btn-warning mt-4 px-5 py-2 fw-bold shadow-lg"
+                                style="transition: 0.3s;"
+                                onmouseover="this.style.transform='scale(1.05)';"
+                                onmouseout="this.style.transform='scale(1)';"
+                                onclick="searchVehicles()">
+                            <i class="fas fa-search"></i> Search Vehicles
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+
+<!-- Animation Library (optional) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
 
 <!-- Features Section -->
 <section class="py-5 bg-light">
