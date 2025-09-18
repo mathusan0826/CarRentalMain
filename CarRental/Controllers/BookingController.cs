@@ -31,6 +31,7 @@ namespace CarRental.Controllers
             };
 
             ViewBag.Vehicle = vehicle;
+            ViewBag.IsCustomerLoggedIn = HttpContext.Session.GetString("CustomerRole") == "Customer";
             return View(booking);
         }
 
@@ -38,7 +39,15 @@ namespace CarRental.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Book(Booking booking)
         {
-            if (!ModelState.IsValid)
+            // Guard: require customer login to place a booking
+            var isCustomerLoggedIn = HttpContext.Session.GetString("CustomerRole") == "Customer";
+            if (!isCustomerLoggedIn)
+            {
+                TempData["AuthRequired"] = "Please login if you are already registered, or register to continue booking.";
+                return RedirectToAction("Login", "Customer", new { returnUrl = Url.Action("Book", new { vehicleId = booking.VehicleID }) });
+            }
+
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -53,6 +62,7 @@ namespace CarRental.Controllers
 
             var vehicle = await _vehicleService.GetVehicleByIdAsync(booking.VehicleID);
             ViewBag.Vehicle = vehicle;
+            ViewBag.IsCustomerLoggedIn = HttpContext.Session.GetString("CustomerRole") == "Customer";
             return View(booking);
         }
 
