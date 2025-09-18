@@ -15,6 +15,24 @@ namespace CarRental.Controllers
             _vehicleService = vehicleService;
         }
 
+        [HttpGet("Booking")]
+        public async Task<IActionResult> Index()
+        {
+            var customerId = HttpContext.Session.GetInt32("CustomerID");
+            if (customerId == null)
+            {
+                return RedirectToAction("Login", "Customer", new { returnUrl = Url.Action("Index", "Booking") });
+            }
+
+            var allBookings = await _bookingService.GetAllBookingsAsync();
+            var myBookings = allBookings
+                .Where(b => b.CustomerID == customerId)
+                .OrderByDescending(b => b.BookingDate)
+                .ToList();
+
+            return View(myBookings);
+        }
+
         [HttpGet("Booking/Book/{vehicleId:int}")]
         public async Task<IActionResult> Book(int vehicleId)
         {
@@ -45,6 +63,13 @@ namespace CarRental.Controllers
             {
                 TempData["AuthRequired"] = "Please login if you are already registered, or register to continue booking.";
                 return RedirectToAction("Login", "Customer", new { returnUrl = Url.Action("Book", new { vehicleId = booking.VehicleID }) });
+            }
+
+            // Attach logged-in customer to the booking
+            var customerId = HttpContext.Session.GetInt32("CustomerID");
+            if (customerId.HasValue)
+            {
+                booking.CustomerID = customerId.Value;
             }
 
             if (!ModelState.IsValid)
