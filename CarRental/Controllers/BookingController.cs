@@ -40,6 +40,7 @@ namespace CarRental.Controllers
         public async Task<IActionResult> Book(Booking booking)
         {
             // Guard: require customer login to place a booking
+            //
             var isCustomerLoggedIn = HttpContext.Session.GetString("CustomerRole") == "Customer";
             if (!isCustomerLoggedIn)
             {
