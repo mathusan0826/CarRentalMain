@@ -38,7 +38,7 @@ namespace CarRental.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Book(Booking booking)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {
