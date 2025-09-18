@@ -1,6 +1,6 @@
 # Car Rental Website with Vehicle Tracking
 
-A complete ASP.NET MVC car rental website with vehicle tracking functionality, built using .NET 6, Entity Framework Core, and MS SQL Server.
+A complete ASP.NET MVC car rental website with vehicle tracking functionality, built using .NET 8, Entity Framework Core, and MS SQL Server.
 
 ## Features
 
@@ -26,7 +26,7 @@ A complete ASP.NET MVC car rental website with vehicle tracking functionality, b
 
 ## Technology Stack
 
-- **Backend**: ASP.NET Core 6 MVC
+- **Backend**: ASP.NET Core 8 MVC
 - **Database**: MS SQL Server with Entity Framework Core
 - **Frontend**: Bootstrap 5, Font Awesome, Google Maps API
 - **Authentication**: Session-based admin authentication
@@ -58,7 +58,7 @@ A complete ASP.NET MVC car rental website with vehicle tracking functionality, b
 
 ### Prerequisites
 - Visual Studio 2022 or later
-- .NET 6 SDK
+- .NET 8 SDK
 - MS SQL Server (LocalDB or Express)
 - Google Maps API Key (optional, for maps functionality)
 
