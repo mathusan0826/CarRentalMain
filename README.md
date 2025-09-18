@@ -231,7 +231,7 @@ This project is licensed under the MIT License.
 ## Support
 
 For support and questions:
-- Email: unicomboys@gmail.com.com
+- Email: unicomboys@gmail.com
 - Phone: +94 76 6251694
 
 ---
