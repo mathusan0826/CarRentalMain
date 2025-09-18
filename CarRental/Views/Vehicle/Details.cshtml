@@ -107,7 +107,9 @@
 
 @if (Context.Session.GetString("AdminUsername") != null && Model.Latitude != 0 && Model.Longitude != 0)
 {
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
+    @* <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script> *@
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
     <script>
         function initMap() {
             const location = { lat: @Model.Latitude, lng: @Model.Longitude };

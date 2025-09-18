@@ -14,5 +14,9 @@ UPDATE Vehicle SET Imagurl = '/images/Mini.jpeg' WHERE Name = 'Mini';
 UPDATE Vehicle SET Imagurl = '/images/Honda.jpeg' WHERE Name = 'Honda';
 UPDATE Vehicle SET Imagurl = '/images/NightShade.jpeg' WHERE Name = 'NightShade';
 UPDATE Vehicle SET Imagurl = '/images/Flamingo.jpeg' WHERE Name = 'Flamingo';
+UPDATE Vehicle SET Imagurl = '/images/3d-rendering-of-a-sports-car-with-colorful-smoke-on-a-black-background-generative-ai-free-photo.jpeg' WHERE Name = '3d-rendering-of-a-sports-car-with-colorful-smoke-on-a-black-background-generative-ai-free-photo';
+UPDATE Vehicle SET Imagurl = '/images/Main-Banner-Collage-2-1.jpeg' WHERE Name = 'Main-Banner-Collage-2-1';
+UPDATE Vehicle SET Imagurl = '/images/about.jpeg' WHERE Name = 'about';
+
 
 

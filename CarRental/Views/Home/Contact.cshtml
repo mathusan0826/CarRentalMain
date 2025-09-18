@@ -1,4 +1,4 @@
-@model CarRental.Models.ContactMessage
+﻿@model CarRental.Models.ContactMessage
 @{
     ViewData["Title"] = "Contact";
 }
@@ -8,7 +8,7 @@
     <div class="alert alert-success">@TempData["ContactSuccess"]</div>
 }
 
-<div class="container py-5">
+@* <div class="container py-5">
     <div class="row">
         <div class="col-md-8">
             <h1 class="mb-4">Contact Us</h1>
@@ -54,9 +54,104 @@
                         </div>
                     </div>
                 </div>
+            </div> *@
+
+<section class="py-5" style="background: linear-gradient(135deg, #0ea5e9, #0369a1);">
+    <div class="container">
+        <h1 class="text-center text-white mb-4 fw-bold">📞 Contact Us</h1>
+        <p class="lead text-center text-light mb-5">
+            Get in touch with us for any inquiries about our car rental services.
+        </p>
+
+        <div class="row g-4">
+            <!-- Phone -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card contact-card shadow-lg border-0 rounded-4 h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="icon-wrapper mb-3 mx-auto">
+                            <i class="fas fa-phone fa-2x text-white"></i>
+                        </div>
+                        <h5 class="fw-bold">Phone</h5>
+                        <p class="mb-0 text-muted">0766251694</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
+            <!-- Email -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card contact-card shadow-lg border-0 rounded-4 h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="icon-wrapper mb-3 mx-auto">
+                            <i class="fas fa-envelope fa-2x text-white"></i>
+                        </div>
+                        <h5 class="fw-bold">Email</h5>
+                        <p class="mb-0 text-muted">unicom_boys@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card contact-card shadow-lg border-0 rounded-4 h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="icon-wrapper mb-3 mx-auto">
+                            <i class="fas fa-map-marker-alt fa-2x text-white"></i>
+                        </div>
+                        <h5 class="fw-bold">Address</h5>
+                        <p class="mb-0 text-muted">Jaffna, Sri Lanka</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hours -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card contact-card shadow-lg border-0 rounded-4 h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="icon-wrapper mb-3 mx-auto">
+                            <i class="fas fa-clock fa-2x text-white"></i>
+                        </div>
+                        <h5 class="fw-bold">Business Hours</h5>
+                        <p class="mb-0 text-muted">24/7 Available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Glassmorphism cards */
+    .contact-card {
+        background: rgba(255, 255, 255, 0.15); /* lighter transparency for more modern glass effect */
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease-in-out;
+    }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 20px 40px rgba(0,0,0,0.25);
+        }
+
+    /* Gradient round icon */
+    .icon-wrapper {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #06b6d4, #3b82f6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .icon-wrapper:hover {
+            transform: scale(1.1);
+        }
+</style>
+
+
+@*             <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0">Send us a Message</h5>
                 </div>
@@ -128,4 +223,202 @@
             </div>
         </div>
     </div>
-</div> 
+</div>  *@
+
+<section class="py-5" style="background: linear-gradient(135deg, #0ea5e9, #0369a1);">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Contact Form -->
+            <div class="col-md-8">
+                <div class="card contact-card shadow-lg border-0 rounded-4">
+                    <div class="card-header bg-transparent border-0">
+                        <h5 class="mb-0 text-white">Send us a Message</h5>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="Contact" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label asp-for="Name" class="form-label text-white">Name</label>
+                                        <input asp-for="Name" class="form-control" required>
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label asp-for="Email" class="form-label text-white">Email</label>
+                                        <input asp-for="Email" class="form-control" required>
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Subject" class="form-label text-white">Subject</label>
+                                <input asp-for="Subject" class="form-control" required>
+                                <span asp-validation-for="Subject" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Message" class="form-label text-white">Message</label>
+                                <textarea asp-for="Message" class="form-control" rows="5" required></textarea>
+                                <span asp-validation-for="Message" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="btn btn-gradient">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Contact & Services -->
+            <div class="col-md-4">
+                <div class="card contact-card shadow-lg border-0 rounded-4 mb-3">
+                    <div class="card-header bg-transparent border-0">
+                        <h5 class="mb-0 text-white">Quick Contact</h5>
+                    </div>
+                    <div class="card-body text-white">
+                        <h6><i class="fas fa-phone icon-gradient"></i> Emergency Contact</h6>
+                        <p>0766251694</p>
+
+                        <h6><i class="fab fa-whatsapp icon-gradient"></i> WhatsApp</h6>
+                        <p>0766251694</p>
+
+                        <h6><i class="fas fa-envelope icon-gradient"></i> Email Support</h6>
+                        <p>unicom_boys@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="card contact-card shadow-lg border-0 rounded-4">
+                    <div class="card-header bg-transparent border-0">
+                        <h5 class="mb-0 text-white">Services</h5>
+                    </div>
+                    <div class="card-body text-white">
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-car icon-gradient"></i> Self Drive</li>
+                            <li><i class="fas fa-user-tie icon-gradient"></i> Tours with Drivers</li>
+                            <li><i class="fas fa-calendar-star icon-gradient"></i> Special Events</li>
+                            <li><i class="fas fa-plane icon-gradient"></i> Airport Transfers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@* 
+<style>
+    /* Glassmorphism cards */
+    .contact-card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease-in-out;
+    }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 20px 40px rgba(0,0,0,0.25);
+        }
+
+    /* Gradient buttons */
+    .btn-gradient {
+        background: linear-gradient(135deg, #06b6d4, #3b82f6);
+        color: #fff;
+        border: none;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+        }
+
+    /* Gradient round icons */
+    .icon-gradient {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background: linear-gradient(135deg, #06b6d4, #3b82f6);
+        color: #fff;
+        border-radius: 50%;
+        margin-right: 8px;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .icon-gradient:hover {
+            transform: scale(1.2);
+        }
+</style> *@
+
+<style>
+    /* Glassmorphism cards */
+    .contact-card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease-in-out;
+    }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 20px 40px rgba(0,0,0,0.25);
+        }
+
+        /* Glassmorphic form inputs */
+        .contact-card .form-control {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .contact-card .form-control:focus {
+                background: rgba(255, 255, 255, 0.25);
+                border-color: #06b6d4;
+                box-shadow: 0 0 10px rgba(6,182,212,0.5);
+                color: #fff;
+            }
+
+    /* Gradient buttons */
+    .btn-gradient {
+        background: linear-gradient(135deg, #06b6d4, #3b82f6);
+        color: #fff;
+        border: none;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+        }
+
+    /* Gradient round icons */
+    .icon-gradient {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background: linear-gradient(135deg, #06b6d4, #3b82f6);
+        color: #fff;
+        border-radius: 50%;
+        margin-right: 8px;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .icon-gradient:hover {
+            transform: scale(1.2);
+        }
+
+    /* White text for labels and headings */
+    .contact-card label,
+    .contact-card h5,
+    .contact-card h6,
+    .contact-card p {
+        color: #fff;
+    }
+</style>
+
