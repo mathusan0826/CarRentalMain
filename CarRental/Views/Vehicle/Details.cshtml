@@ -39,7 +39,7 @@
                     <div class="d-flex gap-2">
                         @if (Model.IsAvailable)
                         {
-                            <a href="/Booking/Book/@Model.VehicleID" class="btn btn-success btn-lg">
+                            <a href="/Booking/Book/@Model.VehicleID" class="btn btn-success btn-lg" id="bookNowBtn">
                                 <i class="fas fa-calendar-check"></i> Book Now
                             </a>
                         }
@@ -170,3 +170,41 @@
     }
     </script>
 } 
+
+<script>
+// Intercept Book Now when not logged in
+document.addEventListener('DOMContentLoaded', function() {
+    const bookBtn = document.getElementById('bookNowBtn');
+    if (!bookBtn) return;
+
+    const isLoggedIn = @((ViewBag.IsCustomerLoggedIn ?? false) ? "true" : "false");
+    if (isLoggedIn === true || isLoggedIn === "true") {
+        return; // allow normal navigation
+    }
+
+    bookBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const modal = new bootstrap.Modal(document.getElementById('authRequiredModal'));
+        modal.show();
+    });
+});
+</script>
+
+<!-- Auth Required Modal -->
+<div class="modal fade" id="authRequiredModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-lock"></i> Login or Register</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Please login if you already have an account, or register to continue with booking this vehicle.
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <a href="/Customer/Register" class="btn btn-primary"><i class="fas fa-user-plus"></i> Register</a>
+        <a href="/Customer/Login?returnUrl=@Url.Action("Book", "Booking", new { vehicleId = Model.VehicleID })" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Login</a>
+      </div>
+    </div>
+  </div>
+</div>

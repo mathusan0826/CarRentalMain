@@ -38,6 +38,7 @@ namespace CarRental.Controllers
                 return NotFound();
             }
 
+            ViewBag.IsCustomerLoggedIn = HttpContext.Session.GetString("CustomerRole") == "Customer";
             return View(vehicle);
         }
 

@@ -40,7 +40,7 @@
                     }
 
                     <!-- Booking Form -->
-                    <form asp-action="Book" method="post">
+                    <form asp-action="Book" method="post" id="bookingForm">
                         <input type="hidden" asp-for="VehicleID" />
                         
                         <div class="row">
@@ -99,7 +99,7 @@
                         </div>
 
                         <div class="d-flex gap-2">
-                            <button type="submit" class="btn btn-success btn-lg">
+                            <button type="button" class="btn btn-success btn-lg" id="confirmBookingBtn">
                                 <i class="fas fa-check"></i> Confirm Booking
                             </button>
                             <a href="/Vehicle/Details/@Model.VehicleID" class="btn btn-outline-secondary btn-lg">
@@ -139,4 +139,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const tomorrowStr = tomorrow.toISOString().split('T')[0];
     document.getElementById('PickupDate').min = tomorrowStr;
 });
+
+// Auth guard for Confirm Booking
+document.getElementById('confirmBookingBtn').addEventListener('click', function () {
+    const isLoggedIn = @((ViewBag.IsCustomerLoggedIn ?? false) ? "true" : "false");
+    if (isLoggedIn === true || isLoggedIn === "true") {
+        document.getElementById('bookingForm').submit();
+        return;
+    }
+
+    const authModal = new bootstrap.Modal(document.getElementById('authRequiredModal'));
+    authModal.show();
+});
 </script> 
+
+<!-- Auth Required Modal -->
+<div class="modal fade" id="authRequiredModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-lock"></i> Login or Register</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Please login if you already have an account, or register to continue with your booking.
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <a href="/Customer/Register" class="btn btn-primary"><i class="fas fa-user-plus"></i> Register</a>
+        <a href="/Customer/Login?returnUrl=@Url.Action("Book", new { vehicleId = Model.VehicleID })" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Login</a>
+      </div>
+    </div>
+  </div>
+</div>
