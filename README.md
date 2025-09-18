@@ -231,8 +231,8 @@ This project is licensed under the MIT License.
 ## Support
 
 For support and questions:
-- Email: support@carrental.com
-- Phone: +94 77 7484820
+- Email: unicomboys@gmail.com.com
+- Phone: +94 76 6251694
 
 ---
 
