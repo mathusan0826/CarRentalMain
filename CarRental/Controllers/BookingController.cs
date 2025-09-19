@@ -108,5 +108,6 @@ namespace CarRental.Controllers
             var totalAmount = await _bookingService.CalculateTotalAmountAsync(vehicleId, rentalDays);
             return Json(new { totalAmount });
         }
+  
     }
 } 
