@@ -78,6 +78,7 @@
                                             <ul class="dropdown-menu">
                                                 <li>
                                                     <form method="post" action="/Admin/UpdateBookingStatus">
+                                                        @Html.AntiForgeryToken()
                                                         <input type="hidden" name="bookingId" value="@booking.BookingID" />
                                                         <input type="hidden" name="status" value="Confirmed" />
                                                         <button type="submit" class="dropdown-item">
@@ -87,6 +88,7 @@
                                                 </li>
                                                 <li>
                                                     <form method="post" action="/Admin/UpdateBookingStatus">
+                                                        @Html.AntiForgeryToken()
                                                         <input type="hidden" name="bookingId" value="@booking.BookingID" />
                                                         <input type="hidden" name="status" value="Completed" />
                                                         <button type="submit" class="dropdown-item">
@@ -96,6 +98,7 @@
                                                 </li>
                                                 <li>
                                                     <form method="post" action="/Admin/UpdateBookingStatus">
+                                                        @Html.AntiForgeryToken()
                                                         <input type="hidden" name="bookingId" value="@booking.BookingID" />
                                                         <input type="hidden" name="status" value="Cancelled" />
                                                         <button type="submit" class="dropdown-item">
