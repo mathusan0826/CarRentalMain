@@ -201,7 +201,7 @@ namespace CarRental.Controllers
             var messages = _context.ContactMessages.OrderByDescending(m => m.SentAt).ToList();
             return View(messages);
         }
-
+        //
         private bool IsAdminLoggedIn()
         {
             return !string.IsNullOrEmpty(HttpContext.Session.GetString("AdminUsername"));
