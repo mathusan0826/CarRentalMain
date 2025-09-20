@@ -5,13 +5,13 @@
 
 <!-- Hero Section -->
 <section class="hero-section text-center"
-         style="position: relative; padding: 120px 0; overflow: hidden;">
+         style="position: relative; padding: 120px 0; overflow: hidden; background: url('https://c4.wallpaperflare.com/wallpaper/321/654/517/machine-dodge-charger-1968-wallpaper-preview.jpg') no-repeat center center/cover;">
 
     <!-- Background Slideshow -->
     <div id="slideshow" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;">
         <div class="slide active" style="background: url('/images/car1.jpg') no-repeat center center/cover;"></div>
         <div class="slide" style="background: url('/images/Saab.jpeg') no-repeat center center/cover;"></div>
-        <div class="slide" style="background: url('//images/NightShade.jpeg') no-repeat center center/cover;"></div>
+        <div class="slide" style="background: url('/images/NightShade.jpeg') no-repeat center center/cover;"></div>
         <div class="slide" style="background: url('/images/Ford.jpeg') no-repeat center center/cover;"></div>
         <div class="slide" style="background: url('/images/Honda Civic.jpeg') no-repeat center center/cover;"></div>
         <div class="slide" style="background: url('/images/Jeep Wrangler.jpeg') no-repeat center center/cover;"></div>
@@ -23,9 +23,9 @@
 
     <!-- Transparent Blur Overlay -->
     @* <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(0, 0, 50, 0.5);
-                backdrop-filter: blur(6px);
-                z-index: 1;"></div> *@
+    background: rgba(0, 0, 50, 0.5);
+    backdrop-filter: blur(6px);
+    z-index: 1;"></div> *@
 
     <!-- Content -->
     <div class="container position-relative" style="z-index: 2;">
@@ -127,11 +127,8 @@
     setInterval(changeSlide, 2000); // change every 2 seconds
 </script>
 
-
-
 <!-- Animation Library (optional) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
 
 <!-- Features Section -->
 <section class="py-5 bg-light">
@@ -174,13 +171,13 @@
     <div class="container">
         <h2 class="text-center mb-5 fw-bold text-uppercase text-primary">WIDE RANGE OF CARS</h2>
         <p class="text-center mb-5">We have a wide range of cars ranging from budget options to luxury wedding cars</p>
-        
+
         <div class="row" id="vehiclesContainer">
             @foreach (var vehicle in Model.Take(6))
             {
                 <div class="col-md-4 mb-4">
                     <div class="card vehicle-card h-100">
-                        <img src="@(string.IsNullOrEmpty(vehicle.ImageUrl) ? "/images/default-car.jpg" : vehicle.ImageUrl)" 
+                        <img src="@(string.IsNullOrEmpty(vehicle.ImageUrl) ? "/images/default-car.jpg" : vehicle.ImageUrl)"
                              class="card-img-top" alt="@vehicle.Name" style="height: 200px; object-fit: cover;">
                         <div class="card-body">
                             <h5 class="card-title">@vehicle.Name</h5>
@@ -202,7 +199,7 @@
                 </div>
             }
         </div>
-        
+
         <div class="text-center mt-4">
             <a href="/Vehicle" class="btn btn-outline-primary btn-lg">
                 View All Vehicles
@@ -212,18 +209,18 @@
 </section>
 
 <script>
-function searchVehicles() {
-    const type = document.getElementById('vehicleType').value;
-    const seats = document.getElementById('seats').value;
-    const pickupDate = document.getElementById('pickupDate').value;
-    const rentalDays = document.getElementById('rentalDays').value;
-    
-    let url = '/Vehicle?';
-    if (type) url += `type=${type}&`;
-    if (seats) url += `seats=${seats}&`;
-    if (pickupDate) url += `pickupDate=${pickupDate}&`;
-    if (rentalDays) url += `rentalDays=${rentalDays}&`;
-    
-    window.location.href = url;
-}
-</script> 
+    function searchVehicles() {
+        const type = document.getElementById('vehicleType').value;
+        const seats = document.getElementById('seats').value;
+        const pickupDate = document.getElementById('pickupDate').value;
+        const rentalDays = document.getElementById('rentalDays').value;
+
+        let url = '/Vehicle?';
+        if (type) url += `type=${type}&`;
+        if (seats) url += `seats=${seats}&`;
+        if (pickupDate) url += `pickupDate=${pickupDate}&`;
+        if (rentalDays) url += `rentalDays=${rentalDays}&`;
+
+        window.location.href = url;
+    }
+</script>

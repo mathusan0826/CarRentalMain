@@ -5,256 +5,93 @@
 
 @if (TempData["ContactSuccess"] != null)
 {
-    <div class="alert alert-success">@TempData["ContactSuccess"]</div>
+    <div class="alert alert-success text-center my-4">@TempData["ContactSuccess"]</div>
 }
 
-@* <div class="container py-5">
-    <div class="row">
-        <div class="col-md-8">
-            <h1 class="mb-4">Contact Us</h1>
-            <p class="lead">Get in touch with us for any inquiries about our car rental services.</p>
-            
-            <div class="row mb-4">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <i class="fas fa-phone fa-3x text-primary mb-3"></i>
-                            <h5>Phone</h5>
-                            <p class="mb-0">0766251694</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <i class="fas fa-envelope fa-3x text-primary mb-3"></i>
-                            <h5>Email</h5>
-                            <p class="mb-0">unicom_boys@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mb-4">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <i class="fas fa-map-marker-alt fa-3x text-primary mb-3"></i>
-                            <h5>Address</h5>
-                            <p class="mb-0">Jaffna, Sri Lanka</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <i class="fas fa-clock fa-3x text-primary mb-3"></i>
-                            <h5>Business Hours</h5>
-                            <p class="mb-0">24/7 Available</p>
-                        </div>
-                    </div>
-                </div>
-            </div> *@
-
-<section class="py-5" style="background: linear-gradient(135deg, #0ea5e9, #0369a1);">
+<section class="py-5 contact-section">
     <div class="container">
-        <h1 class="text-center text-white mb-4 fw-bold">📞 Contact Us</h1>
-        <p class="lead text-center text-light mb-5">
-            Get in touch with us for any inquiries about our car rental services.
-        </p>
+        <!-- Logo -->
+        <div class="text-center mb-4">
+            <img src="~/images/logo.png" alt="Car Rental Logo" class="logo-img" />
+        </div>
 
+        <h1 class="text-center text-white fw-bold mb-3">📞 Contact Us</h1>
+        <p class="lead text-center text-white mb-5">We’re here to assist you — anytime, anywhere. Reach out!</p>
+
+        <!-- Top Contact Info -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-6 col-lg-3">
+                <div class="card contact-card text-center h-100">
+                    <div class="card-body p-4">
+                        <div class="icon-wrapper mx-auto mb-3">
+                            <i class="fas fa-phone fa-lg"></i>
+                        </div>
+                        <h5>Phone</h5>
+                        <p>0766251694</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card contact-card text-center h-100">
+                    <div class="card-body p-4">
+                        <div class="icon-wrapper mx-auto mb-3">
+                            <i class="fas fa-envelope fa-lg"></i>
+                        </div>
+                        <h5>Email</h5>
+                        <p>unicomboys@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card contact-card text-center h-100">
+                    <div class="card-body p-4">
+                        <div class="icon-wrapper mx-auto mb-3">
+                            <i class="fas fa-map-marker-alt fa-lg"></i>
+                        </div>
+                        <h5>Address</h5>
+                        <p>Jaffna, Sri Lanka</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card contact-card text-center h-100">
+                    <div class="card-body p-4">
+                        <div class="icon-wrapper mx-auto mb-3">
+                            <i class="fas fa-clock fa-lg"></i>
+                        </div>
+                        <h5>Open Hours</h5>
+                        <p>24/7 Available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form & Sidebar -->
         <div class="row g-4">
-            <!-- Phone -->
-            <div class="col-md-6 col-lg-3">
-                <div class="card contact-card shadow-lg border-0 rounded-4 h-100 text-center">
-                    <div class="card-body p-4">
-                        <div class="icon-wrapper mb-3 mx-auto">
-                            <i class="fas fa-phone fa-2x text-white"></i>
-                        </div>
-                        <h5 class="fw-bold">Phone</h5>
-                        <p class="mb-0 text-muted">0766251694</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Email -->
-            <div class="col-md-6 col-lg-3">
-                <div class="card contact-card shadow-lg border-0 rounded-4 h-100 text-center">
-                    <div class="card-body p-4">
-                        <div class="icon-wrapper mb-3 mx-auto">
-                            <i class="fas fa-envelope fa-2x text-white"></i>
-                        </div>
-                        <h5 class="fw-bold">Email</h5>
-                        <p class="mb-0 text-muted">unicomboys@gmail.com</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Address -->
-            <div class="col-md-6 col-lg-3">
-                <div class="card contact-card shadow-lg border-0 rounded-4 h-100 text-center">
-                    <div class="card-body p-4">
-                        <div class="icon-wrapper mb-3 mx-auto">
-                            <i class="fas fa-map-marker-alt fa-2x text-white"></i>
-                        </div>
-                        <h5 class="fw-bold">Address</h5>
-                        <p class="mb-0 text-muted">Jaffna, Sri Lanka</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hours -->
-            <div class="col-md-6 col-lg-3">
-                <div class="card contact-card shadow-lg border-0 rounded-4 h-100 text-center">
-                    <div class="card-body p-4">
-                        <div class="icon-wrapper mb-3 mx-auto">
-                            <i class="fas fa-clock fa-2x text-white"></i>
-                        </div>
-                        <h5 class="fw-bold">Business Hours</h5>
-                        <p class="mb-0 text-muted">24/7 Available</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<style>
-    /* Glassmorphism cards */
-    .contact-card {
-        background: rgba(255, 255, 255, 0.15); /* lighter transparency for more modern glass effect */
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: all 0.3s ease-in-out;
-    }
-
-        .contact-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0px 20px 40px rgba(0,0,0,0.25);
-        }
-
-    /* Gradient round icon */
-    .icon-wrapper {
-        width: 70px;
-        height: 70px;
-        background: linear-gradient(135deg, #06b6d4, #3b82f6);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        transition: all 0.3s ease-in-out;
-    }
-
-        .icon-wrapper:hover {
-            transform: scale(1.1);
-        }
-</style>
-
-
-@*             <div class="card">
-                <div class="card-header">
-                    <h5 class="mb-0">Send us a Message</h5>
-                </div>
-                <div class="card-body">
-                    <form asp-action="Contact" method="post">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label asp-for="Name" class="form-label">Name</label>
-                                    <input asp-for="Name" class="form-control" required>
-                                    <span asp-validation-for="Name" class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label asp-for="Email" class="form-label">Email</label>
-                                    <input asp-for="Email" class="form-control" required>
-                                    <span asp-validation-for="Email" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label asp-for="Subject" class="form-label">Subject</label>
-                            <input asp-for="Subject" class="form-control" required>
-                            <span asp-validation-for="Subject" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3">
-                            <label asp-for="Message" class="form-label">Message</label>
-                            <textarea asp-for="Message" class="form-control" rows="5" required></textarea>
-                            <span asp-validation-for="Message" class="text-danger"></span>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="mb-0">Quick Contact</h5>
-                </div>
-                <div class="card-body">
-                    <h6>Emergency Contact</h6>
-                    <p><i class="fas fa-phone"></i> 0766251694</p>
-                    
-                    <h6>WhatsApp</h6>
-                    <p><i class="fab fa-whatsapp"></i> 0766251694</p>
-                    
-                    <h6>Email Support</h6>
-                    <p><i class="fas fa-envelope"></i> unicom_boys@gmail.com</p>
-                </div>
-            </div>
-
-            <div class="card mt-3">
-                <div class="card-header">
-                    <h5 class="mb-0">Services</h5>
-                </div>
-                <div class="card-body">
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-car"></i> Self Drive</li>
-                        <li><i class="fas fa-user-tie"></i> Tours with Drivers</li>
-                        <li><i class="fas fa-calendar-star"></i> Special Events</li>
-                        <li><i class="fas fa-plane"></i> Airport Transfers</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>  *@
-
-<section class="py-5" style="background: linear-gradient(135deg, #0ea5e9, #0369a1);">
-    <div class="container">
-        <div class="row g-4">
-            <!-- Contact Form -->
+            <!-- Form -->
             <div class="col-md-8">
-                <div class="card contact-card shadow-lg border-0 rounded-4">
-                    <div class="card-header bg-transparent border-0">
-                        <h5 class="mb-0 text-white">Send us a Message</h5>
+                <div class="card contact-card">
+                    <div class="card-header border-0 bg-transparent">
+                        <h4 class="text-white fw-bold mb-2"><i class="fas fa-paper-plane me-2"></i> Send Us a Message</h4>
+                        <p class="text-white mb-0">Let us know what you need — we’ll get back to you quickly.</p>
                     </div>
                     <div class="card-body">
                         <form asp-action="Contact" method="post">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label asp-for="Name" class="form-label text-white">Name</label>
-                                        <input asp-for="Name" class="form-control" required>
-                                        <span asp-validation-for="Name" class="text-danger"></span>
-                                    </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Name" class="form-label text-white">Name</label>
+                                    <input asp-for="Name" class="form-control" required />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label asp-for="Email" class="form-label text-white">Email</label>
-                                        <input asp-for="Email" class="form-control" required>
-                                        <span asp-validation-for="Email" class="text-danger"></span>
-                                    </div>
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Email" class="form-label text-white">Email</label>
+                                    <input asp-for="Email" class="form-control" required />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label asp-for="Subject" class="form-label text-white">Subject</label>
-                                <input asp-for="Subject" class="form-control" required>
+                                <input asp-for="Subject" class="form-control" required />
                                 <span asp-validation-for="Subject" class="text-danger"></span>
                             </div>
                             <div class="mb-3">
@@ -263,41 +100,73 @@
                                 <span asp-validation-for="Message" class="text-danger"></span>
                             </div>
                             <button type="submit" class="btn btn-gradient">
-                                <i class="fas fa-paper-plane"></i> Send Message
+                                <i class="fas fa-paper-plane me-1"></i> Send
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Quick Contact & Services -->
+            <!-- Sidebar -->
             <div class="col-md-4">
-                <div class="card contact-card shadow-lg border-0 rounded-4 mb-3">
+                <!-- Quick Contact -->
+                <div class="card contact-card mb-3">
                     <div class="card-header bg-transparent border-0">
-                        <h5 class="mb-0 text-white">Quick Contact</h5>
+                        <h5 class="text-white fw-bold">Quick Contact</h5>
                     </div>
                     <div class="card-body text-white">
-                        <h6><i class="fas fa-phone icon-gradient"></i> Emergency Contact</h6>
-                        <p>0766251694</p>
-
-                        <h6><i class="fab fa-whatsapp icon-gradient"></i> WhatsApp</h6>
-                        <p>0766251694</p>
-
-                        <h6><i class="fas fa-envelope icon-gradient"></i> Email Support</h6>
-                        <p>unicom_boys@gmail.com</p>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="icon-wrapper me-2">
+                                <i class="fas fa-phone fa-sm"></i>
+                            </div>
+                            <span>0766251694</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="icon-wrapper me-2">
+                                <i class="fab fa-whatsapp fa-sm"></i>
+                            </div>
+                            <span>0766251694</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="icon-wrapper me-2">
+                                <i class="fas fa-envelope fa-sm"></i>
+                            </div>
+                            <span>unicom_boys@gmail.com</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="card contact-card shadow-lg border-0 rounded-4">
+                <!-- Services -->
+                <div class="card contact-card">
                     <div class="card-header bg-transparent border-0">
-                        <h5 class="mb-0 text-white">Services</h5>
+                        <h5 class="text-white fw-bold">Our Services</h5>
                     </div>
                     <div class="card-body text-white">
                         <ul class="list-unstyled">
-                            <li><i class="fas fa-car icon-gradient"></i> Self Drive</li>
-                            <li><i class="fas fa-user-tie icon-gradient"></i> Tours with Drivers</li>
-                            <li><i class="fas fa-calendar-star icon-gradient"></i> Special Events</li>
-                            <li><i class="fas fa-plane icon-gradient"></i> Airport Transfers</li>
+                            <li class="d-flex align-items-center mb-2">
+                                <div class="icon-wrapper me-2">
+                                    <i class="fas fa-car fa-sm"></i>
+                                </div>
+                                <span>Self Drive</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-2">
+                                <div class="icon-wrapper me-2">
+                                    <i class="fas fa-user-tie fa-sm"></i>
+                                </div>
+                                <span>With Driver</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-2">
+                                <div class="icon-wrapper me-2">
+                                    <i class="fas fa-calendar-star fa-sm"></i>
+                                </div>
+                                <span>Events & Weddings</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <div class="icon-wrapper me-2">
+                                    <i class="fas fa-plane fa-sm"></i>
+                                </div>
+                                <span>Airport Pickup</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -305,120 +174,89 @@
         </div>
     </div>
 </section>
-@* 
 <style>
-    /* Glassmorphism cards */
+    /* Background + Overlay */
+    .contact-section {
+        background: url('https://c4.wallpaperflare.com/wallpaper/321/654/517/machine-dodge-charger-1968-wallpaper-preview.jpg') no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+        position: relative;
+    }
+
+        .contact-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: -1;
+        }
+
+    /* Logo */
+    .logo-img {
+        width: 120px;
+        height: auto;
+        filter: drop-shadow(0 0 5px rgba(255,255,255,0.6));
+    }
+
+    /* Cards */
     .contact-card {
-        background: rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.12);
         backdrop-filter: blur(15px);
         border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: all 0.3s ease-in-out;
+        color: white;
+        border-radius: 20px;
+        transition: all 0.3s ease;
     }
 
         .contact-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0px 20px 40px rgba(0,0,0,0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
 
-    /* Gradient buttons */
-    .btn-gradient {
-        background: linear-gradient(135deg, #06b6d4, #3b82f6);
-        color: #fff;
-        border: none;
-        transition: all 0.3s ease-in-out;
-    }
-
-        .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
-        }
-
-    /* Gradient round icons */
-    .icon-gradient {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+    /* Circular Icons */
+    .icon-wrapper {
         width: 30px;
         height: 30px;
         background: linear-gradient(135deg, #06b6d4, #3b82f6);
-        color: #fff;
+        color: white;
         border-radius: 50%;
-        margin-right: 8px;
-        transition: all 0.3s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        flex-shrink: 0;
     }
 
-        .icon-gradient:hover {
-            transform: scale(1.2);
-        }
-</style> *@
-
-<style>
-    /* Glassmorphism cards */
-    .contact-card {
+    /* Inputs */
+    .contact-card .form-control {
         background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: all 0.3s ease-in-out;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
     }
 
-        .contact-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0px 20px 40px rgba(0,0,0,0.25);
+        .contact-card .form-control::placeholder {
+            color: #ddd;
         }
 
-        /* Glassmorphic form inputs */
-        .contact-card .form-control {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            color: #fff;
-            transition: all 0.3s ease-in-out;
+        .contact-card .form-control:focus {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: #3b82f6;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+            color: white;
         }
 
-            .contact-card .form-control:focus {
-                background: rgba(255, 255, 255, 0.25);
-                border-color: #06b6d4;
-                box-shadow: 0 0 10px rgba(6,182,212,0.5);
-                color: #fff;
-            }
-
-    /* Gradient buttons */
+    /* Button */
     .btn-gradient {
         background: linear-gradient(135deg, #06b6d4, #3b82f6);
-        color: #fff;
+        color: white;
         border: none;
-        transition: all 0.3s ease-in-out;
+        padding: 10px 25px;
+        border-radius: 8px;
+        transition: 0.3s ease-in-out;
     }
 
         .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+            transform: scale(1.05);
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
         }
-
-    /* Gradient round icons */
-    .icon-gradient {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 30px;
-        height: 30px;
-        background: linear-gradient(135deg, #06b6d4, #3b82f6);
-        color: #fff;
-        border-radius: 50%;
-        margin-right: 8px;
-        transition: all 0.3s ease-in-out;
-    }
-
-        .icon-gradient:hover {
-            transform: scale(1.2);
-        }
-
-    /* White text for labels and headings */
-    .contact-card label,
-    .contact-card h5,
-    .contact-card h6,
-    .contact-card p {
-        color: #fff;
-    }
 </style>
-
