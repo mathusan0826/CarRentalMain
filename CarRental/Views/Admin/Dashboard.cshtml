@@ -3,74 +3,62 @@
     Layout = "_AdminLayout";
 }
 
-<div class="container-fluid py-4">
-    <div class="row">
-        <div class="col-12">
-            <h1 class="mb-4">
-                <i class="fas fa-tachometer-alt"></i> Admin Dashboard
-            </h1>
-        </div>
+<!-- Hero Section with Car Background -->
+<div class="dashboard-hero text-white d-flex align-items-center">
+    <div class="container">
+        <h1 class="mb-0">
+            <i class="fas fa-tachometer-alt"></i> Admin Dashboard
+        </h1>
     </div>
+</div>
 
+<!-- Dashboard Content with Subtle Background -->
+<div class="container-fluid py-4 dashboard-bg">
     <!-- Statistics Cards -->
-    <div class="row mb-4">
-        <div class="col-md-3">
-            <div class="card bg-primary text-white">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <h4 class="mb-0">@ViewBag.TotalVehicles</h4>
-                            <p class="mb-0">Total Vehicles</p>
-                        </div>
-                        <div class="align-self-center">
-                            <i class="fas fa-car fa-2x"></i>
-                        </div>
+    <div class="row mb-4 g-3 justify-content-center">
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="card bg-primary text-white stats-card-wrapper">
+                <div class="card-body d-flex justify-content-between align-items-center stats-card">
+                    <div class="stats-text">
+                        <h4 class="mb-0 count" data-target="@ViewBag.TotalVehicles">0</h4>
+                        <p class="mb-0 text-truncate" title="Total Vehicles">Total Vehicles</p>
                     </div>
+                    <i class="fas fa-car fa-2x"></i>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card bg-success text-white">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <h4 class="mb-0">@ViewBag.TotalBookings</h4>
-                            <p class="mb-0">Total Bookings</p>
-                        </div>
-                        <div class="align-self-center">
-                            <i class="fas fa-calendar-check fa-2x"></i>
-                        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="card bg-success text-white stats-card-wrapper">
+                <div class="card-body d-flex justify-content-between align-items-center stats-card">
+                    <div class="stats-text">
+                        <h4 class="mb-0 count" data-target="@ViewBag.TotalBookings">0</h4>
+                        <p class="mb-0 text-truncate" title="Total Bookings">Total Bookings</p>
                     </div>
+                    <i class="fas fa-calendar-check fa-2x"></i>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card bg-warning text-white">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <h4 class="mb-0">@ViewBag.PendingBookings</h4>
-                            <p class="mb-0">Pending Bookings</p>
-                        </div>
-                        <div class="align-self-center">
-                            <i class="fas fa-clock fa-2x"></i>
-                        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="card bg-warning text-white stats-card-wrapper">
+                <div class="card-body d-flex justify-content-between align-items-center stats-card">
+                    <div class="stats-text">
+                        <h4 class="mb-0 count" data-target="@ViewBag.PendingBookings">0</h4>
+                        <p class="mb-0 text-truncate" title="Pending Bookings">Pending Bookings</p>
                     </div>
+                    <i class="fas fa-clock fa-2x"></i>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card bg-info text-white">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <h4 class="mb-0">Welcome</h4>
-                            <p class="mb-0">@Context.Session.GetString("AdminFullName")</p>
-                        </div>
-                        <div class="align-self-center">
-                            <i class="fas fa-user-shield fa-2x"></i>
-                        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="card bg-info text-white stats-card-wrapper">
+                <div class="card-body d-flex justify-content-between align-items-center stats-card">
+                    <div class="stats-text">
+                        <h4 class="mb-0">Welcome</h4>
+                        <p class="mb-0 text-truncate" title="@Context.Session.GetString("AdminFullName")">
+                            @Context.Session.GetString("AdminFullName")
+                        </p>
                     </div>
+                    <i class="fas fa-user-shield fa-2x"></i>
                 </div>
             </div>
         </div>
@@ -84,28 +72,28 @@
                     <h5 class="mb-0">Quick Actions</h5>
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-3">
+                    <div class="row g-2">
+                        <div class="col-sm-6 col-md-3 col-lg-2">
                             <a href="/Admin/Vehicles" class="btn btn-outline-primary w-100 mb-2">
                                 <i class="fas fa-car"></i> Manage Vehicles
                             </a>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-sm-6 col-md-3 col-lg-2">
                             <a href="/Admin/Bookings" class="btn btn-outline-success w-100 mb-2">
                                 <i class="fas fa-calendar-check"></i> View Bookings
                             </a>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-sm-6 col-md-3 col-lg-2">
                             <a href="/Admin/CreateVehicle" class="btn btn-outline-info w-100 mb-2">
                                 <i class="fas fa-plus"></i> Add New Vehicle
                             </a>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-sm-6 col-md-3 col-lg-2">
                             <a href="/Admin/ContactMessages" class="btn btn-outline-warning w-100 mb-2">
                                 <i class="fas fa-envelope"></i> Contact Messages
                             </a>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-sm-6 col-md-3 col-lg-2">
                             <a href="/Admin/Logout" class="btn btn-outline-danger w-100 mb-2">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
@@ -133,63 +121,184 @@
     </div>
 </div>
 
+<!-- Styles + Animations -->
+<style>
+    /* Hero Banner */
+    .dashboard-hero {
+        background: url('/images/Ford.jpeg') center/cover no-repeat;
+        height: 200px;
+        position: relative;
+        animation: fadeInHero 2s ease-in-out, zoomPan 20s ease-in-out infinite alternate;
+    }
+
+        .dashboard-hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .dashboard-hero h1 {
+            position: relative;
+            z-index: 1;
+        }
+
+    @@keyframes fadeInHero {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @@keyframes zoomPan {
+        0% {
+            background-size: 100%;
+            background-position: center top;
+        }
+
+        50% {
+            background-size: 110%;
+            background-position: center center;
+        }
+
+        100% {
+            background-size: 100%;
+            background-position: center bottom;
+        }
+    }
+
+    /* Dashboard Background */
+    .dashboard-bg {
+        background: url('/images/3d-rendering-of-a-sports-car-with-colorful-smoke-on-a-black-background-generative-ai-free-photo.jpg') no-repeat center center fixed;
+        background-size: cover;
+        position: relative;
+    }
+
+        .dashboard-bg::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(255,255,255,0.8), rgba(200,200,200,0.7));
+            background-size: 200% 200%;
+            animation: gradientMove 12s ease infinite;
+            z-index: 0;
+        }
+
+    @@keyframes gradientMove {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .dashboard-bg > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Card Hover */
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+    /* Stats Cards Flex Fix */
+    .stats-card {
+        flex-wrap: nowrap;
+    }
+
+        .stats-card h4, .stats-card p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 0;
+        }
+
+        .stats-card i {
+            flex-shrink: 0;
+            margin-left: 8px;
+        }
+
+    @@media (max-width:576px) {
+        .stats-card {
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            text-align: center;
+        }
+
+            .stats-card h4, .stats-card p {
+                font-size: 0.9rem;
+            }
+
+            .stats-card i {
+                margin-left: 0;
+                display: block;
+                margin-top: 0.3rem;
+            }
+    }
+</style>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
 <script>
-// Initialize tracking map
-function initTrackingMap() {
-    const map = new google.maps.Map(document.getElementById("trackingMap"), {
-        zoom: 12,
-        center: { lat: 9.6615, lng: 80.0255 }, // Jaffna coordinates
-    });
-
-    // Add markers for all vehicles (you would fetch this data from server)
-    const vehicles = [
-        { name: "Honda Civic", lat: 9.6615, lng: 80.0255, type: "CAR" },
-        { name: "Toyota Aqua", lat: 9.6620, lng: 80.0260, type: "CAR" },
-        { name: "Suzuki Swift", lat: 9.6610, lng: 80.0250, type: "CAR" },
-        { name: "Toyota Hiace", lat: 9.6625, lng: 80.0265, type: "VAN" },
-        { name: "Mitsubishi Delica", lat: 9.6618, lng: 80.0258, type: "VAN" },
-        { name: "Toyota Coaster", lat: 9.6630, lng: 80.0270, type: "BUS" },
-        { name: "Jeep Wrangler", lat: 9.6612, lng: 80.0252, type: "JEEP" }
-    ];
-
-    vehicles.forEach(vehicle => {
-        const marker = new google.maps.Marker({
-            position: { lat: vehicle.lat, lng: vehicle.lng },
-            map: map,
-            title: vehicle.name,
-            icon: {
-                url: getVehicleIcon(vehicle.type),
-                scaledSize: new google.maps.Size(32, 32)
-            }
+    function initTrackingMap() {
+        const map = new google.maps.Map(document.getElementById("trackingMap"), { zoom:12, center:{lat:9.6615,lng:80.0255}});
+        const vehicles = [
+            {name:"Honda Civic",lat:9.6615,lng:80.0255,type:"CAR"},
+            {name:"Toyota Aqua",lat:9.6620,lng:80.0260,type:"CAR"},
+            {name:"Suzuki Swift",lat:9.6610,lng:80.0250,type:"CAR"},
+            {name:"Toyota Hiace",lat:9.6625,lng:80.0265,type:"VAN"},
+            {name:"Mitsubishi Delica",lat:9.6618,lng:80.0258,type:"VAN"},
+            {name:"Toyota Coaster",lat:9.6630,lng:80.0270,type:"BUS"},
+            {name:"Jeep Wrangler",lat:9.6612,lng:80.0252,type:"JEEP"}
+        ];
+        vehicles.forEach(v=>{
+            const marker=new google.maps.Marker({
+                position:{lat:v.lat,lng:v.lng}, map, title:v.name,
+                icon:{url:getVehicleIcon(v.type), scaledSize:new google.maps.Size(32,32)}
+            });
+            const infoWindow=new google.maps.InfoWindow({
+                content:`<div class="p-2" style="font-family:Arial;font-size:14px;">
+                            <strong>${v.name}</strong><br>
+                            <span class="badge bg-secondary">${v.type}</span><br>
+                            <small>Lat:${v.lat.toFixed(4)}, Lng:${v.lng.toFixed(4)}</small>
+                         </div>`
+            });
+            marker.addListener('click',()=>{infoWindow.open(map,marker);});
         });
+    }
+    function getVehicleIcon(type){
+        const icons={'CAR':'https://maps.google.com/mapfiles/ms/icons/red-dot.png','VAN':'https://maps.google.com/mapfiles/ms/icons/blue-dot.png','BUS':'https://maps.google.com/mapfiles/ms/icons/green-dot.png','JEEP':'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png'};
+        return icons[type]||icons['CAR'];
+    }
 
-        const infoWindow = new google.maps.InfoWindow({
-            content: `
-                <div>
-                    <h6>${vehicle.name}</h6>
-                    <p>Type: ${vehicle.type}</p>
-                    <p>Location: ${vehicle.lat.toFixed(4)}, ${vehicle.lng.toFixed(4)}</p>
-                </div>
-            `
+    function countUp(){
+        document.querySelectorAll('.count').forEach(counter=>{
+            const target=+counter.getAttribute('data-target'); let count=0; const step=target/100;
+            const updateCount=()=>{ count+=step; if(count<target){ counter.innerText=Math.ceil(count); requestAnimationFrame(updateCount);} else {counter.innerText=target;} };
+            updateCount();
         });
+    }
 
-        marker.addListener('click', () => {
-            infoWindow.open(map, marker);
-        });
-    });
-}
-
-function getVehicleIcon(type) {
-    const icons = {
-        'CAR': 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
-        'VAN': 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-        'BUS': 'https://maps.google.com/mapfiles/ms/icons/green-dot.png',
-        'JEEP': 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
-    };
-    return icons[type] || icons['CAR'];
-}
-
-// Initialize map when page loads
-window.addEventListener('load', initTrackingMap);
-</script> 
+    window.addEventListener('load',()=>{ initTrackingMap(); countUp(); });
+</script>
