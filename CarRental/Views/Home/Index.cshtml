@@ -5,7 +5,7 @@
 
 <!-- Hero Section -->
 <section class="hero-section text-center"
-         style="position: relative; padding: 120px 0; overflow: hidden; background: url('https://c4.wallpaperflare.com/wallpaper/321/654/517/machine-dodge-charger-1968-wallpaper-preview.jpg') no-repeat center center/cover;">
+         style="position: relative; padding: 120px 0; overflow: hidden; background: url('https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/1ce26161968317.5a8063352c7f9.jpg') no-repeat center center/cover;">
 
     <!-- Background Slideshow -->
     <div id="slideshow" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;">
@@ -21,12 +21,7 @@
         <div class="slide" style="background: url('/images/car-rental.jpeg') no-repeat center center/cover;"></div>
     </div>
 
-    <!-- Transparent Blur Overlay -->
-    @* <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 50, 0.5);
-    backdrop-filter: blur(6px);
-    z-index: 1;"></div> *@
-
+ 
     <!-- Content -->
     <div class="container position-relative" style="z-index: 2;">
         <h1 class="display-3 fw-bold text-white mb-3">
@@ -48,7 +43,7 @@
                         <div class="row g-4">
                             <div class="col-md-3">
                                 <label class="form-label text-white">Vehicle Type</label>
-                                <select class="form-select bg-dark text-white border-light" id="vehicleType">
+                                <select class="form-select bg-white text-black border-dark" id="vehicleType">
                                     <option value="">All Types</option>
                                     <option value="CAR">Car</option>
                                     <option value="VAN">Van</option>
@@ -58,7 +53,7 @@
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label text-white">Seats</label>
-                                <select class="form-select bg-dark text-white border-light" id="seats">
+                                <select class="form-select bg-white text-black border-dark" id="seats">
                                     <option value="">Any</option>
                                     <option value="4">4 Seats</option>
                                     <option value="5">5 Seats</option>
@@ -69,14 +64,14 @@
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label text-white">Pick-up Date</label>
-                                <input type="date" class="form-control bg-dark text-white border-light" id="pickupDate">
+                                <input type="date" class="form-control bg-white text-dark border-dark" id="pickupDate">
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label text-white">Rental Days</label>
-                                <input type="number" class="form-control bg-dark text-white border-light" id="rentalDays" min="1" max="30" value="1">
+                                <input type="number" class="form-control bg-white text-dark border-dark" id="rentalDays" min="1" max="30" value="1">
                             </div>
                         </div>
-                        <button class="btn btn-warning mt-4 px-5 py-2 fw-bold shadow-lg"
+                        <button class="btn btn-primary mt-4 px-5 py-2 fw-bold shadow-lg"
                                 style="transition: 0.2s;"
                                 onmouseover="this.style.transform='scale(1.05)';"
                                 onmouseout="this.style.transform='scale(1)';"
@@ -130,69 +125,35 @@
 <!-- Animation Library (optional) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-<!-- Features Section -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-3">
-                <div class="feature-icon mb-3">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <h5>24/7 Phone Support</h5>
-                <p>We offer round-the-clock support for all your needs.</p>
-            </div>
-            <div class="col-md-3">
-                <div class="feature-icon mb-3">
-                    <i class="fas fa-credit-card"></i>
-                </div>
-                <h5>No Credit Card Fees</h5>
-                <p>Transparent pricing with no hidden charges.</p>
-            </div>
-            <div class="col-md-3">
-                <div class="feature-icon mb-3">
-                    <i class="fas fa-edit"></i>
-                </div>
-                <h5>No Amendment Fees</h5>
-                <p>Flexible booking with free modifications.</p>
-            </div>
-            <div class="col-md-3">
-                <div class="feature-icon mb-3">
-                    <i class="fas fa-file-alt"></i>
-                </div>
-                <h5>Less Documentation</h5>
-                <p>Only NIC or Passport copy required.</p>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Vehicles Section -->
-<section class="py-5">
-    <div class="container">
-        <h2 class="text-center mb-5 fw-bold text-uppercase text-primary">WIDE RANGE OF CARS</h2>
-        <p class="text-center mb-5">We have a wide range of cars ranging from budget options to luxury wedding cars</p>
+
+<!-- VEHICLES SECTION -->
+<section class="py-5" style="background: url('https://th.bing.com/th/id/OIP.E_9n9HvwAPmIMVS550J2_gHaEP?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3') no-repeat center center/cover; position: relative; z-index: 1;">
+    <div class="container position-relative" style="z-index: 2;">
+        <h2 class="text-center mb-4 fw-bold text-uppercase text-white">WIDE RANGE OF CARS</h2>
+        <p class="text-center text-white mb-5">We have a wide range of cars ranging from budget options to luxury wedding cars</p>
 
         <div class="row" id="vehiclesContainer">
             @foreach (var vehicle in Model.Take(6))
             {
                 <div class="col-md-4 mb-4">
-                    <div class="card vehicle-card h-100">
-                        <img src="@(string.IsNullOrEmpty(vehicle.ImageUrl) ? "/images/default-car.jpg" : vehicle.ImageUrl)"
-                             class="card-img-top" alt="@vehicle.Name" style="height: 200px; object-fit: cover;">
+                    <div class="card vehicle-card glass-card hover-3d h-100 text-black">
+                        <img src="@(string.IsNullOrEmpty(vehicle.ImageUrl) ? "https://th.bing.com/th/id/OIP.E_9n9HvwAPmIMVS550J2_gHaEP?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" : vehicle.ImageUrl)"
+                             class="card-img-top" alt="@vehicle.Name" style="height: 200px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+
                         <div class="card-body">
                             <h5 class="card-title">@vehicle.Name</h5>
                             <p class="card-text">@vehicle.Description</p>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center mt-3">
                                 <span class="badge bg-primary">@vehicle.Type</span>
                                 <span class="badge bg-secondary">@vehicle.Seats Seats</span>
                             </div>
                         </div>
-                        <div class="card-footer bg-white border-0">
+
+                        <div class="card-footer bg-transparent border-0">
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="h5 mb-0">Rs. @vehicle.PricePerDay.ToString("N0")</span>
-                                <a href="/Vehicle/Details/@vehicle.VehicleID" class="btn btn-primary">
-                                    View Details
-                                </a>
+                                <span class="h5 text-black mb-0">Rs. @vehicle.PricePerDay.ToString("N0")</span>
+                                <a href="/Vehicle/Details/@vehicle.VehicleID" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -201,13 +162,10 @@
         </div>
 
         <div class="text-center mt-4">
-            <a href="/Vehicle" class="btn btn-outline-primary btn-lg">
-                View All Vehicles
-            </a>
+            <a href="/Vehicle" class="btn btn-outline-primary btn-lg">View All Vehicles</a>
         </div>
     </div>
 </section>
-
 <script>
     function searchVehicles() {
         const type = document.getElementById('vehicleType').value;
@@ -224,3 +182,123 @@
         window.location.href = url;
     }
 </script>
+
+<!-- Features Section -->
+<section class="py-5" style="background: rgba(231, 245, 255, 0.8); backdrop-filter: blur(6px);">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5 text-dark text-uppercase">Why Choose Us</h2>
+        <div class="row text-center">
+            <!-- Feature Box -->
+            <div class="col-md-3 mb-4">
+                <div class="p-4 rounded-4 shadow-sm h-100 bg-white feature-box hover-effect">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-clock fa-2x text-primary"></i>
+                    </div>
+                    <h5 class="fw-semibold">24/7 Phone Support</h5>
+                    <p class="text-muted">Round-the-clock support for all your needs.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="p-4 rounded-4 shadow-sm h-100 bg-white feature-box hover-effect">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-credit-card fa-2x text-primary"></i>
+                    </div>
+                    <h5 class="fw-semibold">No Credit Card Fees</h5>
+                    <p class="text-muted">Transparent pricing with no hidden charges.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="p-4 rounded-4 shadow-sm h-100 bg-white feature-box hover-effect">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-edit fa-2x text-primary"></i>
+                    </div>
+                    <h5 class="fw-semibold">No Amendment Fees</h5>
+                    <p class="text-muted">Flexible booking with free modifications.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="p-4 rounded-4 shadow-sm h-100 bg-white feature-box hover-effect">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-file-alt fa-2x text-primary"></i>
+                    </div>
+                    <h5 class="fw-semibold">Less Documentation</h5>
+                    <p class="text-muted">Only NIC or Passport copy required.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- VEHICLES SECTION STYLES -->
+<style>
+    /* Glass card effect */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.7); /* Increased white for contrast */
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        color: black;
+    }
+
+    /* 3D hover effect */
+    .hover-3d:hover {
+        transform: rotateX(4deg) rotateY(4deg) scale(1.03);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Image Zoom */
+    .vehicle-card img {
+        transition: transform 0.4s ease;
+    }
+
+    .vehicle-card:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Title underline animation */
+    .vehicle-card .card-title {
+        position: relative;
+        display: inline-block;
+    }
+
+        .vehicle-card .card-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            height: 2px;
+            width: 100%;
+            background-color: #0d6efd;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+    .vehicle-card:hover .card-title::after {
+        transform: scaleX(1);
+    }
+
+    /* Button Hover */
+    .vehicle-card .btn-primary {
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+        .vehicle-card .btn-primary:hover {
+            background-color: #0b5ed7;
+            transform: scale(1.05);
+        }
+
+    /* Outline Button Hover */
+    .btn-outline-dark:hover {
+        background-color: black;
+        color: white;
+    }
+</style>
+
