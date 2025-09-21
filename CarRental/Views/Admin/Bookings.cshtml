@@ -1,10 +1,10 @@
-@model IEnumerable<CarRental.Models.Booking>
+﻿@model IEnumerable<CarRental.Models.Booking>
 @{
     ViewData["Title"] = "Manage Bookings";
     Layout = "_AdminLayout";
 }
 
-<div class="container-fluid py-4">
+@* <div class="container-fluid py-4">
     <h1 class="mb-4">
         <i class="fas fa-calendar-check"></i> Manage Bookings
     </h1>
@@ -170,4 +170,204 @@
             </div>
         </div>
     </div>
-</div> 
+</div>  *@
+
+                                        <div class="container-fluid py-4">
+    <!-- ✅ Gradient Title -->
+    <h1 class="mb-4 text-gradient">
+        <i class="fas fa-calendar-check"></i> Manage Bookings
+    </h1>
+
+    <!-- ✅ Glassmorphic Card -->
+    <div class="card glass-card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4">
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <!-- ✅ Gradient Header -->
+                    <thead class="table-header text-white text-center">
+                        <tr>
+                            <th><i class="fas fa-hashtag"></i> ID</th>
+                            <th><i class="fas fa-user"></i> Customer</th>
+                            <th><i class="fas fa-car"></i> Vehicle</th>
+                            <th><i class="fas fa-calendar-day"></i> Pick-up</th>
+                            <th><i class="fas fa-clock"></i> Days</th>
+                            <th><i class="fas fa-money-bill-wave"></i> Amount</th>
+                            <th><i class="fas fa-flag"></i> Status</th>
+                            <th><i class="fas fa-calendar-plus"></i> Booked At</th>
+                            <th><i class="fas fa-cogs"></i> Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            @foreach (var booking in Model)
+                            {
+                                <tr>
+                                    <td class="fw-bold">#@booking.BookingID</td>
+
+                                    <!-- ✅ Customer Info -->
+                                    <td>
+                                        <span class="badge bg-light text-dark px-3 py-2 rounded-pill shadow-sm">
+                                            @booking.CustomerName
+                                        </span>
+                                        <br />
+                                        <small class="text-muted">
+                                            <i class="fas fa-phone"></i> @booking.Phone <br />
+                                            <a href="mailto:@booking.Email" class="email-link">
+                                                <i class="fas fa-envelope"></i> @booking.Email
+                                            </a>
+                                        </small>
+                                    </td>
+
+                                    <!-- ✅ Vehicle Info -->
+                                    <td>
+                                        <strong>@booking.Vehicle.Name</strong><br />
+                                        <span class="badge bg-primary">@booking.Vehicle.Type</span>
+                                        <span class="badge bg-secondary">@booking.Vehicle.Seats seats</span>
+                                    </td>
+
+                                    <td>@booking.PickupDate.ToString("MMM dd, yyyy")</td>
+                                    <td>@booking.RentalDays days</td>
+                                    <td><strong>Rs. @booking.TotalAmount.ToString("N0")</strong></td>
+
+                                    <!-- ✅ Status Badge -->
+                                    <td>
+                                        <span class="badge @(booking.Status switch {
+                                            "Pending" => "bg-warning text-dark",
+                                            "Confirmed" => "bg-success",
+                                            "Completed" => "bg-info text-dark",
+                                            "Cancelled" => "bg-danger",
+                                            _ => "bg-secondary"
+                                        }) px-3 py-2 rounded-pill">
+                                            @booking.Status
+                                        </span>
+                                    </td>
+
+                                    <td>@booking.BookingDate.ToString("MMM dd, HH:mm")</td>
+
+                                    <!-- ✅ Actions -->
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-sm btn-outline-primary" 
+                                                    data-bs-toggle="modal" data-bs-target="#bookingModal@(booking.BookingID)">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" 
+                                                    data-bs-toggle="dropdown">
+                                                <i class="fas fa-cog"></i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <form method="post" action="/Admin/UpdateBookingStatus">
+                                                        @Html.AntiForgeryToken()
+                                                        <input type="hidden" name="bookingId" value="@booking.BookingID" />
+                                                        <input type="hidden" name="status" value="Confirmed" />
+                                                        <button type="submit" class="dropdown-item">
+                                                            <i class="fas fa-check text-success"></i> Confirm
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                                <li>
+                                                    <form method="post" action="/Admin/UpdateBookingStatus">
+                                                        @Html.AntiForgeryToken()
+                                                        <input type="hidden" name="bookingId" value="@booking.BookingID" />
+                                                        <input type="hidden" name="status" value="Completed" />
+                                                        <button type="submit" class="dropdown-item">
+                                                            <i class="fas fa-flag-checkered text-info"></i> Complete
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                                <li>
+                                                    <form method="post" action="/Admin/UpdateBookingStatus">
+                                                        @Html.AntiForgeryToken()
+                                                        <input type="hidden" name="bookingId" value="@booking.BookingID" />
+                                                        <input type="hidden" name="status" value="Cancelled" />
+                                                        <button type="submit" class="dropdown-item">
+                                                            <i class="fas fa-times text-danger"></i> Cancel
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Modal (kept as in your original code) -->
+                            }
+                        }
+                        else
+                        {
+                            <!-- ✅ Empty State -->
+                            <tr>
+                                <td colspan="9" class="text-center text-muted py-5">
+                                    <i class="fas fa-inbox fa-2x mb-3"></i><br />
+                                    No bookings available.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* ✅ Gradient Title */
+    .text-gradient {
+        background: linear-gradient(135deg, #06b6d4, #3b82f6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 800;
+    }
+
+    /* ✅ Glassmorphic Card */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 16px;
+        transition: all 0.3s ease-in-out;
+    }
+    .glass-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ✅ Gradient Table Header */
+    .table-header {
+        background: linear-gradient(135deg, #0d6efd, #06b6d4);
+    }
+
+    /* ✅ Table Row Hover */
+    .table tbody tr {
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 12px;
+        transition: all 0.25s ease-in-out;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .table tbody tr:hover {
+        background: rgba(240, 249, 255, 0.95);
+        transform: scale(1.01);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    /* ✅ Cells */
+    .table td, .table th {
+        padding: 15px;
+        vertical-align: middle;
+        text-align: center;
+        border: none !important;
+    }
+
+    /* ✅ Email Styling */
+    .email-link {
+        color: #0d6efd;
+        transition: 0.2s;
+    }
+    .email-link:hover {
+        text-decoration: underline;
+        color: #6610f2;
+    }
+</style>

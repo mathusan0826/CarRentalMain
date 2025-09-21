@@ -37,7 +37,7 @@ namespace CarRental.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Contact(ContactMessage message)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.ContactMessages.Add(message);
                 _context.SaveChanges();
