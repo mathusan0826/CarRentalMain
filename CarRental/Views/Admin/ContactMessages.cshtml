@@ -4,52 +4,20 @@
     Layout = "_AdminLayout";
 }
 
-@* <div class="container-fluid py-4">
-    <h1 class="mb-4"><i class="fas fa-envelope"></i> Contact Messages</h1>
-    <div class="card">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover">
-                    <thead class="table-light">
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Subject</th>
-                            <th>Message</th>
-                            <th>Sent At</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var msg in Model)
-                        {
-                            <tr>
-                                <td>@msg.Id</td>
-                                <td>@msg.Name</td>
-                                <td>@msg.Email</td>
-                                <td>@msg.Subject</td>
-                                <td>@msg.Message</td>
-                                <td>@msg.SentAt.ToString("MMM dd, yyyy HH:mm")</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<!-- Hero Section with Animated Background -->
+<div class="dashboard-hero text-white d-flex align-items-center mb-4">
+    <div class="container">
+        <h1 class="mb-0">
+            <i class="fas fa-envelope-open-text"></i> Contact Messages
+        </h1>
     </div>
-</div>  *@
+</div>
 
-
-<div class="container-fluid py-4">
-    <h1 class="mb-4 text-gradient">
-        <i class="fas fa-envelope-open-text"></i> Contact Messages
-    </h1>
-
+<div class="container-fluid py-4 dashboard-bg">
     <div class="card shadow-lg border-0 rounded-4">
         <div class="card-body p-4">
             <div class="table-responsive">
                 <table class="table align-middle mb-0">
-                    <!-- ✅ Gradient Header -->
                     <thead class="table-header text-white text-center">
                         <tr>
                             <th>#</th>
@@ -67,29 +35,21 @@
                             {
                                 <tr>
                                     <td class="fw-bold text-center">@msg.Id</td>
-
-                                    <!-- ✅ Name Badge -->
                                     <td>
                                         <span class="badge bg-light text-dark px-3 py-2 rounded-pill shadow-sm">
                                             @msg.Name
                                         </span>
                                     </td>
-
-                                    <!-- ✅ Email with icon -->
                                     <td>
                                         <a href="mailto:@msg.Email" class="text-decoration-none fw-semibold email-link">
                                             <i class="fas fa-envelope text-primary"></i> @msg.Email
                                         </a>
                                     </td>
-
-                                    <!-- ✅ Subject Badge -->
                                     <td>
                                         <span class="badge bg-info text-dark px-3 py-2 rounded-pill shadow-sm">
                                             @msg.Subject
                                         </span>
                                     </td>
-
-                                    <!-- ✅ Truncated Message -->
                                     <td>
                                         <span class="d-inline-block text-truncate fw-light text-muted"
                                               style="max-width: 250px;"
@@ -97,8 +57,6 @@
                                             @msg.Message
                                         </span>
                                     </td>
-
-                                    <!-- ✅ Date -->
                                     <td class="text-muted small">
                                         <i class="fas fa-calendar-alt"></i>
                                         @msg.SentAt.ToString("MMM dd, yyyy hh:mm tt")
@@ -108,7 +66,6 @@
                         }
                         else
                         {
-                            <!-- ✅ Empty State -->
                             <tr>
                                 <td colspan="6" class="text-center text-muted py-5">
                                     <i class="fas fa-inbox fa-2x mb-3"></i><br />
@@ -124,7 +81,7 @@
 </div>
 
 <style>
-    /* ✅ Gradient Title */
+    /* Gradient Title */
     .text-gradient {
         background: linear-gradient(135deg, #06b6d4, #3b82f6);
         -webkit-background-clip: text;
@@ -132,12 +89,12 @@
         font-weight: 800;
     }
 
-    /* ✅ Gradient Table Header */
+    /* Gradient Table Header */
     .table-header {
         background: linear-gradient(135deg, #0d6efd, #06b6d4);
     }
 
-    /* ✅ Table Rows */
+    /* Table Rows */
     .table tbody tr {
         background: #ffffff;
         border-radius: 12px;
@@ -151,7 +108,7 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.12);
         }
 
-    /* ✅ Table Cells */
+    /* Table Cells */
     .table td, .table th {
         padding: 15px;
         vertical-align: middle;
@@ -159,7 +116,7 @@
         border: none !important;
     }
 
-    /* ✅ Email Link */
+    /* Email Link */
     .email-link {
         color: #0d6efd;
         transition: 0.2s;
@@ -169,6 +126,93 @@
             text-decoration: underline;
             color: #6610f2;
         }
+
+    /* ================= Hero Animation ================= */
+    .dashboard-hero {
+        background: url('/images/Ford.jpeg') center/cover no-repeat;
+        height: 180px;
+        position: relative;
+        animation: fadeInHero 2s ease-in-out, zoomPan 20s ease-in-out infinite alternate;
+    }
+
+        .dashboard-hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .dashboard-hero h1 {
+            position: relative;
+            z-index: 1;
+        }
+
+    @@keyframes fadeInHero {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @@keyframes zoomPan {
+        0% {
+            background-size: 100%;
+            background-position: center top;
+        }
+
+        50% {
+            background-size: 110%;
+            background-position: center center;
+        }
+
+        100% {
+            background-size: 100%;
+            background-position: center bottom;
+        }
+    }
+
+    /* ================= Dashboard Background Animation ================= */
+    .dashboard-bg {
+        background: url('/images/3d-rendering-of-a-sports-car-with-colorful-smoke-on-a-black-background-generative-ai-free-photo.jpg') no-repeat center center fixed;
+        background-size: cover;
+        position: relative;
+    }
+
+        .dashboard-bg::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(255,255,255,0.8), rgba(200,200,200,0.7));
+            background-size: 200% 200%;
+            animation: gradientMove 12s ease infinite;
+            z-index: 0;
+        }
+
+    @@keyframes gradientMove {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .dashboard-bg > * {
+        position: relative;
+        z-index: 1;
+    }
 </style>
-
-
