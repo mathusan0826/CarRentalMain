@@ -4,186 +4,23 @@
     Layout = "_AdminLayout";
 }
 
-@* <div class="container-fluid py-4">
-    <h1 class="mb-4">
-        <i class="fas fa-calendar-check"></i> Manage Bookings
-    </h1>
-
-    <div class="card">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Booking ID</th>
-                            <th>Customer</th>
-                            <th>Vehicle</th>
-                            <th>Pick-up Date</th>
-                            <th>Days</th>
-                            <th>Total Amount</th>
-                            <th>Status</th>
-                            <th>Booking Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var booking in Model)
-                        {
-                            <tr>
-                                <td>#@booking.BookingID</td>
-                                <td>
-                                    <div>
-                                        <strong>@booking.CustomerName</strong><br>
-                                        <small class="text-muted">
-                                            <i class="fas fa-phone"></i> @booking.Phone<br>
-                                            <i class="fas fa-envelope"></i> @booking.Email
-                                        </small>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <strong>@booking.Vehicle.Name</strong><br>
-                                        <small class="text-muted">
-                                            <span class="badge bg-primary">@booking.Vehicle.Type</span>
-                                            <span class="badge bg-secondary">@booking.Vehicle.Seats seats</span>
-                                        </small>
-                                    </div>
-                                </td>
-                                <td>@booking.PickupDate.ToString("MMM dd, yyyy")</td>
-                                <td>@booking.RentalDays days</td>
-                                <td><strong>Rs. @booking.TotalAmount.ToString("N0")</strong></td>
-                                <td>
-                                    <span class="badge @(booking.Status switch {
-                                        "Pending" => "bg-warning",
-                                        "Confirmed" => "bg-success",
-                                        "Completed" => "bg-info",
-                                        "Cancelled" => "bg-danger",
-                                        _ => "bg-secondary"
-                                    })">
-                                        @booking.Status
-                                    </span>
-                                </td>
-                                <td>@booking.BookingDate.ToString("MMM dd, HH:mm")</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-sm btn-outline-primary" 
-                                                data-bs-toggle="modal" data-bs-target="#bookingModal@(booking.BookingID)">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" 
-                                                    data-bs-toggle="dropdown">
-                                                <i class="fas fa-cog"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <form method="post" action="/Admin/UpdateBookingStatus">
-                                                        @Html.AntiForgeryToken()
-                                                        <input type="hidden" name="bookingId" value="@booking.BookingID" />
-                                                        <input type="hidden" name="status" value="Confirmed" />
-                                                        <button type="submit" class="dropdown-item">
-                                                            <i class="fas fa-check text-success"></i> Confirm
-                                                        </button>
-                                                    </form>
-                                                </li>
-                                                <li>
-                                                    <form method="post" action="/Admin/UpdateBookingStatus">
-                                                        @Html.AntiForgeryToken()
-                                                        <input type="hidden" name="bookingId" value="@booking.BookingID" />
-                                                        <input type="hidden" name="status" value="Completed" />
-                                                        <button type="submit" class="dropdown-item">
-                                                            <i class="fas fa-flag-checkered text-info"></i> Complete
-                                                        </button>
-                                                    </form>
-                                                </li>
-                                                <li>
-                                                    <form method="post" action="/Admin/UpdateBookingStatus">
-                                                        @Html.AntiForgeryToken()
-                                                        <input type="hidden" name="bookingId" value="@booking.BookingID" />
-                                                        <input type="hidden" name="status" value="Cancelled" />
-                                                        <button type="submit" class="dropdown-item">
-                                                            <i class="fas fa-times text-danger"></i> Cancel
-                                                        </button>
-                                                    </form>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <!-- Booking Details Modal -->
-                            <div class="modal fade" id="bookingModal@(booking.BookingID)" tabindex="-1">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Booking Details #@booking.BookingID</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <h6>Customer Information</h6>
-                                                    <p><strong>Name:</strong> @booking.CustomerName</p>
-                                                    <p><strong>Phone:</strong> @booking.Phone</p>
-                                                    <p><strong>Email:</strong> @booking.Email</p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <h6>Vehicle Information</h6>
-                                                    <p><strong>Vehicle:</strong> @booking.Vehicle.Name</p>
-                                                    <p><strong>Type:</strong> @booking.Vehicle.Type</p>
-                                                    <p><strong>Seats:</strong> @booking.Vehicle.Seats</p>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <h6>Rental Details</h6>
-                                                    <p><strong>Pick-up Date:</strong> @booking.PickupDate.ToString("MMM dd, yyyy")</p>
-                                                    <p><strong>Rental Days:</strong> @booking.RentalDays</p>
-                                                    <p><strong>Total Amount:</strong> Rs. @booking.TotalAmount.ToString("N0")</p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <h6>Booking Information</h6>
-                                                    <p><strong>Status:</strong> 
-                                                        <span class="badge @(booking.Status switch {
-                                                            "Pending" => "bg-warning",
-                                                            "Confirmed" => "bg-success",
-                                                            "Completed" => "bg-info",
-                                                            "Cancelled" => "bg-danger",
-                                                            _ => "bg-secondary"
-                                                        })">@booking.Status</span>
-                                                    </p>
-                                                    <p><strong>Booking Date:</strong> @booking.BookingDate.ToString("MMM dd, yyyy HH:mm")</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<!-- Hero Section with Background + Animation -->
+<div class="dashboard-hero text-white d-flex align-items-center mb-4">
+    <div class="container">
+        <h1 class="mb-0">
+            <i class="fas fa-calendar-check"></i> Manage Bookings
+        </h1>
     </div>
-</div>  *@
+</div>
 
-                                        <div class="container-fluid py-4">
-    <!-- ✅ Gradient Title -->
-    <h1 class="mb-4 text-gradient">
-        <i class="fas fa-calendar-check"></i> Manage Bookings
-    </h1>
+<div class="container-fluid py-4 dashboard-bg">
 
-    <!-- ✅ Glassmorphic Card -->
+
+    <!-- Glassmorphic Card -->
     <div class="card glass-card shadow-lg border-0 rounded-4">
         <div class="card-body p-4">
             <div class="table-responsive">
                 <table class="table align-middle mb-0">
-                    <!-- ✅ Gradient Header -->
                     <thead class="table-header text-white text-center">
                         <tr>
                             <th><i class="fas fa-hashtag"></i> ID</th>
@@ -204,13 +41,10 @@
                             {
                                 <tr>
                                     <td class="fw-bold">#@booking.BookingID</td>
-
-                                    <!-- ✅ Customer Info -->
                                     <td>
                                         <span class="badge bg-light text-dark px-3 py-2 rounded-pill shadow-sm">
                                             @booking.CustomerName
-                                        </span>
-                                        <br />
+                                        </span><br />
                                         <small class="text-muted">
                                             <i class="fas fa-phone"></i> @booking.Phone <br />
                                             <a href="mailto:@booking.Email" class="email-link">
@@ -218,19 +52,14 @@
                                             </a>
                                         </small>
                                     </td>
-
-                                    <!-- ✅ Vehicle Info -->
                                     <td>
                                         <strong>@booking.Vehicle.Name</strong><br />
                                         <span class="badge bg-primary">@booking.Vehicle.Type</span>
                                         <span class="badge bg-secondary">@booking.Vehicle.Seats seats</span>
                                     </td>
-
                                     <td>@booking.PickupDate.ToString("MMM dd, yyyy")</td>
                                     <td>@booking.RentalDays days</td>
                                     <td><strong>Rs. @booking.TotalAmount.ToString("N0")</strong></td>
-
-                                    <!-- ✅ Status Badge -->
                                     <td>
                                         <span class="badge @(booking.Status switch {
                                             "Pending" => "bg-warning text-dark",
@@ -242,10 +71,7 @@
                                             @booking.Status
                                         </span>
                                     </td>
-
                                     <td>@booking.BookingDate.ToString("MMM dd, HH:mm")</td>
-
-                                    <!-- ✅ Actions -->
                                     <td>
                                         <div class="btn-group" role="group">
                                             <button type="button" class="btn btn-sm btn-outline-primary" 
@@ -291,13 +117,10 @@
                                         </div>
                                     </td>
                                 </tr>
-
-                                <!-- Modal (kept as in your original code) -->
                             }
                         }
                         else
                         {
-                            <!-- ✅ Empty State -->
                             <tr>
                                 <td colspan="9" class="text-center text-muted py-5">
                                     <i class="fas fa-inbox fa-2x mb-3"></i><br />
@@ -313,7 +136,7 @@
 </div>
 
 <style>
-    /* ✅ Gradient Title */
+    /* Gradient Title */
     .text-gradient {
         background: linear-gradient(135deg, #06b6d4, #3b82f6);
         -webkit-background-clip: text;
@@ -321,7 +144,7 @@
         font-weight: 800;
     }
 
-    /* ✅ Glassmorphic Card */
+    /* Glassmorphic Card */
     .glass-card {
         background: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(12px);
@@ -332,15 +155,15 @@
     }
     .glass-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     }
 
-    /* ✅ Gradient Table Header */
+    /* Gradient Table Header */
     .table-header {
         background: linear-gradient(135deg, #0d6efd, #06b6d4);
     }
 
-    /* ✅ Table Row Hover */
+    /* Table Row Hover */
     .table tbody tr {
         background: rgba(255, 255, 255, 0.85);
         border-radius: 12px;
@@ -353,7 +176,6 @@
         box-shadow: 0 8px 16px rgba(0,0,0,0.15);
     }
 
-    /* ✅ Cells */
     .table td, .table th {
         padding: 15px;
         vertical-align: middle;
@@ -361,7 +183,7 @@
         border: none !important;
     }
 
-    /* ✅ Email Styling */
+    /* Email Styling */
     .email-link {
         color: #0d6efd;
         transition: 0.2s;
@@ -370,4 +192,62 @@
         text-decoration: underline;
         color: #6610f2;
     }
+
+    /* ================= Hero Animation ================= */
+    .dashboard-hero {
+        background: url('/images/Ford.jpeg') center/cover no-repeat;
+        height: 180px;
+        position: relative;
+        animation: fadeInHero 2s ease-in-out, zoomPan 20s ease-in-out infinite alternate;
+    }
+
+    .dashboard-hero::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.4);
+    }
+
+    .dashboard-hero h1 {
+        position: relative;
+        z-index: 1;
+    }
+
+    @@keyframes fadeInHero {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @@keyframes zoomPan {
+        0%   { background-size: 100%; background-position: center top; }
+        50%  { background-size: 110%; background-position: center center; }
+        100% { background-size: 100%; background-position: center bottom; }
+    }
+
+    /* ================= Dashboard Background Animation ================= */
+    .dashboard-bg {
+        background: url('/images/3d-rendering-of-a-sports-car-with-colorful-smoke-on-a-black-background-generative-ai-free-photo.jpg') no-repeat center center fixed;
+        background-size: cover;
+        position: relative;
+    }
+
+    .dashboard-bg::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: linear-gradient(120deg, rgba(255,255,255,0.8), rgba(200,200,200,0.7));
+        background-size: 200% 200%;
+        animation: gradientMove 12s ease infinite;
+        z-index: 0;
+    }
+
+    @@keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .dashboard-bg > * { position: relative; z-index: 1; }
 </style>
