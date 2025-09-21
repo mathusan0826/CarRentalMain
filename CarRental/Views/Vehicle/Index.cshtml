@@ -20,76 +20,65 @@
 }
 
 <div class="container py-5">
-    <h1 class="text-center mb-5">Choose your VEHICLE</h1>
-    
-    <!-- Filter Section -->
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label class="form-label">Vehicle Type</label>
-                            <select class="form-select" id="filterType" onchange="filterVehicles()">
-                                <option value="">All</option>
-                                @foreach (var type in types)
-                                {
-                                    var selected = selectedType == type ? " selected" : "";
-                                    @Html.Raw($"<option value=\"{type}\"{selected}>{type}</option>")
-                                }
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label">Seats</label>
-                            <select class="form-select" id="filterSeats" onchange="filterVehicles()">
-                                <option value="">Any</option>
-                                @foreach (var seat in seatOptions)
-                                {
-                                    var selected = selectedSeats == seat ? " selected" : "";
-                                    @Html.Raw($"<option value=\"{seat}\"{selected}>{seat} Seats</option>")
-                                }
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label">Price Range</label>
-                            <select class="form-select" id="filterPrice" onchange="filterVehicles()">
-                                <option value="">Any Price</option>
-                                @foreach (var price in priceOptions)
-                                {
-                                    var selected = selectedPrice == price.Value ? " selected" : "";
-                                    @Html.Raw($"<option value=\"{price.Value}\"{selected}>{price.Text}</option>")
-                                }
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label">Availability</label>
-                            <select class="form-select" id="filterAvailability" onchange="filterVehicles()">
-                                <option value="">All</option>
-                                @foreach (var avail in availabilityOptions)
-                                {
-                                    var selected = selectedAvailability == avail.Value ? " selected" : "";
-                                    @Html.Raw($"<option value=\"{avail.Value}\"{selected}>{avail.Text}</option>")
-                                }
-                            </select>
-                        </div>
-                    </div>
-                </div>
+    <h1 class="text-center fw-bold text-uppercase mb-5 text-white">Choose Your Vehicle</h1>
+
+    <!-- FILTER SECTION -->
+    <div class="card glass-card mb-5 p-4">
+        <div class="row g-4">
+            <div class="col-md-3">
+                <label class="form-label">Vehicle Type</label>
+                <select class="form-select" id="filterType" onchange="filterVehicles()">
+                    <option value="">All</option>
+                    @foreach (var type in types)
+                    {
+                        var selected = selectedType == type ? " selected" : "";
+                        @Html.Raw($"<option value=\"{type}\"{selected}>{type}</option>")
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Seats</label>
+                <select class="form-select" id="filterSeats" onchange="filterVehicles()">
+                    <option value="">Any</option>
+                    @foreach (var seat in seatOptions)
+                    {
+                        var selected = selectedSeats == seat ? " selected" : "";
+                        @Html.Raw($"<option value=\"{seat}\"{selected}>{seat} Seats</option>")
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Price Range</label>
+                <select class="form-select" id="filterPrice" onchange="filterVehicles()">
+                    <option value="">Any Price</option>
+                    @foreach (var price in priceOptions)
+                    {
+                        var selected = selectedPrice == price.Value ? " selected" : "";
+                        @Html.Raw($"<option value=\"{price.Value}\"{selected}>{price.Text}</option>")
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Availability</label>
+                <select class="form-select" id="filterAvailability" onchange="filterVehicles()">
+                    <option value="">All</option>
+                    @foreach (var avail in availabilityOptions)
+                    {
+                        var selected = selectedAvailability == avail.Value ? " selected" : "";
+                        @Html.Raw($"<option value=\"{avail.Value}\"{selected}>{avail.Text}</option>")
+                    }
+                </select>
             </div>
         </div>
     </div>
 
-    <!-- Vehicles Grid -->
+    <!-- VEHICLE GRID -->
     <div class="row" id="vehiclesGrid">
         @foreach (var vehicle in Model)
         {
-            <div class="col-md-4 mb-4 vehicle-item" 
-                 data-type="@vehicle.Type" 
-                 data-seats="@vehicle.Seats" 
-                 data-price="@vehicle.PricePerDay"
-                 data-available="@vehicle.IsAvailable.ToString().ToLower()">
-                <div class="card vehicle-card h-100">
-                    <img src="@(string.IsNullOrEmpty(vehicle.ImageUrl) ? "/images/Honda Civic.jpeg" : vehicle.ImageUrl)" 
-                         class="card-img-top" alt="@vehicle.Name" style="height: 200px; object-fit: cover;">
+            <div class="col-md-4 mb-4 vehicle-item" data-type="@vehicle.Type" data-seats="@vehicle.Seats" data-price="@vehicle.PricePerDay" data-available="@vehicle.IsAvailable.ToString().ToLower()">
+                <div class="card vehicle-card glass-card hover-3d h-100 text-black">
+                    <img src="@(string.IsNullOrEmpty(vehicle.ImageUrl) ? "https://th.bing.com/th/id/OIP.E_9n9HvwAPmIMVS550J2_gHaEP?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" : vehicle.ImageUrl)" class="card-img-top" alt="@vehicle.Name" style="height: 200px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;">
                     <div class="card-body">
                         <h5 class="card-title">@vehicle.Name</h5>
                         <p class="card-text">@vehicle.Description</p>
@@ -97,39 +86,31 @@
                             <span class="badge bg-primary">@vehicle.Type</span>
                             <span class="badge bg-secondary">@vehicle.Seats Seats</span>
                         </div>
+
                         @if (Context.Session.GetString("AdminUsername") != null)
                         {
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <small class="text-muted">
-                                    <i class="fas fa-map-marker-alt"></i> 
-                                    Location: @(vehicle.Latitude != 0 ? $"{vehicle.Latitude:F4}, {vehicle.Longitude:F4}" : "Not set")
-                                </small>
-                                <small class="text-muted">
-                                    <i class="fas fa-clock"></i> 
-                                    Updated: @vehicle.LastLocationUpdate.ToString("MMM dd, HH:mm")
-                                </small>
+                            <div class="d-flex justify-content-between align-items-center small text-muted mb-2">
+                                <span><i class="fas fa-map-marker-alt"></i> @(vehicle.Latitude != 0 ? $"{vehicle.Latitude:F4}, {vehicle.Longitude:F4}" : "Location not set")</span>
+                                <span><i class="fas fa-clock"></i> @vehicle.LastLocationUpdate.ToString("MMM dd, HH:mm")</span>
                             </div>
                         }
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="badge @(vehicle.IsAvailable ? "bg-success" : "bg-danger")">
-                                @(vehicle.IsAvailable ? "Available" : "Not Available")
-                            </span>
-                        </div>
+
+                        <span class="badge @(vehicle.IsAvailable ? "bg-success" : "bg-danger")">
+                            @(vehicle.IsAvailable ? "Available" : "Not Available")
+                        </span>
                     </div>
-                    <div class="card-footer bg-white border-0">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="h5 mb-0">Rs. @vehicle.PricePerDay.ToString("N0")</span>
-                            <div>
-                                <a href="/Vehicle/Details/@vehicle.VehicleID" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-eye"></i> Details
+                    <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center">
+                        <span class="h5 mb-0">Rs. @vehicle.PricePerDay.ToString("N0")</span>
+                        <div>
+                            <a href="/Vehicle/Details/@vehicle.VehicleID" class="btn btn-primary btn-sm">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            @if (vehicle.IsAvailable)
+                            {
+                                <a href="/Booking/Book/@vehicle.VehicleID" class="btn btn-success btn-sm">
+                                    <i class="fas fa-calendar-check"></i> Book Now
                                 </a>
-                                @if (vehicle.IsAvailable)
-                                {
-                                    <a href="/Booking/Book/@vehicle.VehicleID" class="btn btn-success btn-sm">
-                                        <i class="fas fa-calendar-check"></i> Book Now
-                                    </a>
-                                }
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -137,7 +118,7 @@
         }
     </div>
 
-    <!-- No Results Message -->
+    <!-- NO RESULTS -->
     <div id="noResults" class="text-center py-5" style="display: none;">
         <i class="fas fa-search fa-3x text-muted mb-3"></i>
         <h4>No vehicles found</h4>
@@ -145,62 +126,120 @@
     </div>
 </div>
 
+<!-- FILTER SCRIPT -->
 <script>
-function filterVehicles() {
-    const type = document.getElementById('filterType').value;
-    const seats = document.getElementById('filterSeats').value;
-    const price = document.getElementById('filterPrice').value;
-    const availability = document.getElementById('filterAvailability').value;
-    
-    const vehicles = document.querySelectorAll('.vehicle-item');
-    let visibleCount = 0;
-    
-    vehicles.forEach(vehicle => {
-        let show = true;
-        
-        // Filter by type
-        if (type && vehicle.dataset.type !== type) {
-            show = false;
-        }
-        
-        // Filter by seats
-        if (seats && vehicle.dataset.seats !== seats) {
-            show = false;
-        }
-        
-        // Filter by price
-        if (price) {
-            const vehiclePrice = parseInt(vehicle.dataset.price);
-            const [min, max] = price.split('-').map(p => parseInt(p));
-            if (vehiclePrice < min || vehiclePrice > max) {
-                show = false;
-            }
-        }
-        
-        // Filter by availability
-        if (availability && vehicle.dataset.available !== availability) {
-            show = false;
-        }
-        
-        if (show) {
-            vehicle.style.display = 'block';
-            visibleCount++;
-        } else {
-            vehicle.style.display = 'none';
-        }
-    });
-    
-    // Show/hide no results message
-    const noResults = document.getElementById('noResults');
-    if (visibleCount === 0) {
-        noResults.style.display = 'block';
-    } else {
-        noResults.style.display = 'none';
-    }
-}
+    function filterVehicles() {
+        const type = document.getElementById('filterType').value;
+        const seats = document.getElementById('filterSeats').value;
+        const price = document.getElementById('filterPrice').value;
+        const availability = document.getElementById('filterAvailability').value;
+        const vehicles = document.querySelectorAll('.vehicle-item');
+        let visibleCount = 0;
 
-// Initialize filters on page load
-document.addEventListener('DOMContentLoaded', function() {
-    filterVehicles();
-});
-</script> 
+        vehicles.forEach(vehicle => {
+            let show = true;
+            if (type && vehicle.dataset.type !== type) show = false;
+            if (seats && vehicle.dataset.seats !== seats) show = false;
+            if (price) {
+                const vehiclePrice = parseInt(vehicle.dataset.price);
+                const [min, max] = price.split('-').map(p => parseInt(p));
+                if (vehiclePrice < min || vehiclePrice > max) show = false;
+            }
+            if (availability && vehicle.dataset.available !== availability) show = false;
+
+            vehicle.style.display = show ? 'block' : 'none';
+            if (show) visibleCount++;
+        });
+
+        document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', filterVehicles);
+</script>
+
+<!-- STYLES -->
+<style>
+    body {
+        background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/1ce26161968317.5a8063352c7f9.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #f0f0f0;
+    }
+
+    /* Glass card blur effect */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        color: black;
+    }
+
+    .hover-3d:hover {
+        transform: rotateX(4deg) rotateY(4deg) scale(1.03);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .vehicle-card img {
+        transition: transform 0.4s ease;
+    }
+
+    .vehicle-card:hover img {
+        transform: scale(1.05);
+    }
+
+    .vehicle-card .card-title {
+        position: relative;
+        display: inline-block;
+    }
+
+        .vehicle-card .card-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            height: 2px;
+            width: 100%;
+            background-color: #0d6efd;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+    .vehicle-card:hover .card-title::after {
+        transform: scaleX(1);
+    }
+
+    .vehicle-card .btn-primary {
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+        .vehicle-card .btn-primary:hover {
+            background-color: #0b5ed7;
+            transform: scale(1.05);
+        }
+
+    .btn-outline-dark:hover {
+        background-color: black;
+        color: white;
+    }
+
+    /* Updated text styling */
+    .form-label {
+        color: black;
+        font-weight: 600;
+    }
+
+    select.form-select {
+        background-color: rgba(255, 255, 255, 0.9);
+        color: black;
+    }
+
+    .text-muted {
+        color: #e0e0e0 !important;
+    }
+</style>
