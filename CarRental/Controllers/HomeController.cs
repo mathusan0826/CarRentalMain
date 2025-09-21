@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using CarRental.Services;
 using CarRental.Models;
 using CarRental.Data;
@@ -33,23 +33,39 @@ namespace CarRental.Controllers
             return View(new ContactMessage());
         }
 
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Contact(ContactMessage message)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        _context.ContactMessages.Add(message);
+        //        _context.SaveChanges();
+        //        TempData["ContactSuccess"] = "Your message has been sent!";
+        //        return RedirectToAction("Contact");
+        //    }
+        //    return View(message);
+        //}
+
+        //public IActionResult Error()
+        //{
+        //    return View();
+        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Contact(ContactMessage message)
+        public IActionResult Contact(ContactMessage model)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                _context.ContactMessages.Add(message);
+                model.SentAt = DateTime.Now; // Save current time
+                _context.ContactMessages.Add(model);
                 _context.SaveChanges();
-                TempData["ContactSuccess"] = "Your message has been sent!";
+
+                TempData["ContactSuccess"] = "✅ Your message has been sent successfully!";
                 return RedirectToAction("Contact");
             }
-            return View(message);
-        }
 
-        public IActionResult Error()
-        {
-            return View();
+            return View(model);
         }
     }
 } 
