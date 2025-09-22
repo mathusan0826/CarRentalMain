@@ -30,6 +30,14 @@
             color: #fff;
             background-color: #007bff;
         }
+        /* Top navbar custom color */
+        .admin-topbar {
+            background-color: #001f3f; /* navy */
+        }
+        .admin-topbar .navbar-brand,
+        .admin-topbar .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+        }
     </style>
 </head>
 <body>
@@ -46,10 +54,13 @@
                             <i class="fas fa-tachometer-alt"></i> Dashboard
                         </a>
                         <a class="admin-nav-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Vehicles" ? "active" : "")" href="/Admin/Vehicles">
-                            <i class="fas fa-car"></i> Manage Vehicles
+                            <i class="fas fa-car"></i> Vehicles
                         </a>
                         <a class="admin-nav-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Bookings" ? "active" : "")" href="/Admin/Bookings">
-                            <i class="fas fa-calendar-check"></i> Manage Bookings
+                            <i class="fas fa-calendar-check"></i> Bookings
+                        </a>
+                        <a class="admin-nav-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "Rentals" ? "active" : "")" href="/Admin/Rentals">
+                            <i class="fas fa-key"></i> Rentals
                         </a>
                         <a class="admin-nav-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "ContactMessages" ? "active" : "")" href="/Admin/ContactMessages">
                             <i class="fas fa-envelope"></i> Contact Messages
@@ -65,7 +76,7 @@
             <!-- Admin Content -->
             <div class="col-md-10 admin-content">
                 <!-- Top Navigation Bar -->
-                <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+                <nav class="navbar navbar-expand-lg navbar-dark shadow-sm admin-topbar">
                     <div class="container-fluid">
                         <span class="navbar-brand mb-0 h1">
                             Welcome, @Context.Session.GetString("AdminUsername")
