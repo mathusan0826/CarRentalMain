@@ -1,4 +1,4 @@
--- Update vehicle image paths
+ -- Update vehicle image paths
 UPDATE Vehicles SET ImageUrl = '/images/Honda Civic.jpeg' WHERE Name = 'Honda Civic';
 UPDATE Vehicles SET ImageUrl = '/images/Toyota Aqua.jpeg' WHERE Name = 'Toyota Aqua';
 UPDATE Vehicles SET ImageUrl = '/images/Suzuki Swift.jpeg' WHERE Name = 'Suzuki Swift';
@@ -17,6 +17,17 @@ UPDATE Vehicle SET Imagurl = '/images/Flamingo.jpeg' WHERE Name = 'Flamingo';
 UPDATE Vehicle SET Imagurl = '/images/3d-rendering-of-a-sports-car-with-colorful-smoke-on-a-black-background-generative-ai-free-photo.jpeg' WHERE Name = '3d-rendering-of-a-sports-car-with-colorful-smoke-on-a-black-background-generative-ai-free-photo';
 UPDATE Vehicle SET Imagurl = '/images/Main-Banner-Collage-2-1.jpeg' WHERE Name = 'Main-Banner-Collage-2-1';
 UPDATE Vehicle SET Imagurl = '/images/about.jpeg' WHERE Name = 'about';
+UPDATE Vehicle SET Imagurl = '/images/about.jpeg' WHERE Name = 'about';
+UPDATE Vehicle SET Imagurl = '/images/about.jpeg' WHERE Name = 'about';
+UPDATE Vehicle SET Imagurl = '/images/about.jpeg' WHERE Name = 'about';
+UPDATE Vehicle SET Imagurl = '/images/about.jpeg' WHERE Name = 'about';
+UPDATE Vehicle SET Imagurl = '/images/about.jpeg' WHERE Name = 'about';
+UPDATE Vehicle SET Imagurl = '/images/about.jpeg' WHERE Name = 'about';
+UPDATE Vehicle SET Imagurl = '/images/about.jpeg' WHERE Name = 'about';
+UPDATE Vehicle SET Imagurl = '/images/about.jpeg' WHERE Name = 'about';
+UPDATE Vehicle SET Imagurl = '/images/about.jpeg' WHERE Name = 'about';
+UPDATE Vehicle SET Imagurl = '/images/about.jpeg' WHERE Name = 'about';
+
 
 
 

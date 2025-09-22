@@ -2,34 +2,37 @@
 @{
     ViewData["Title"] = "Edit Vehicle";
     Layout = "_AdminLayout";
+    var bgImage = string.IsNullOrWhiteSpace(Model?.ImageUrl) ? "/images/Ford.jpeg" : Model.ImageUrl;
 }
 
-@* <div class="container py-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="mb-0">
-                        <i class="fas fa-edit"></i> Edit Vehicle: @Model.Name
-                    </h3>
-                </div>
-                <div class="card-body">
-                    <form asp-action="EditVehicle" method="post">
-                        <input type="hidden" asp-for="VehicleID" />
-                        <input type="hidden" asp-for="LastLocationUpdate" />
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
+<div class="edit-vehicle-bg" style="background: url('@bgImage') no-repeat center center fixed; background-size: cover;">
+    <div class="edit-overlay"></div>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Glassmorphic Card -->
+                <div class="card glass-card shadow-lg border-0 rounded-4">
+                    <!-- Gradient Card Header -->
+                    <div class="card-header text-gradient py-3">
+                        <h3 class="mb-0"><i class="fas fa-edit"></i> Edit Vehicle: @Model.Name</h3>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <form asp-action="EditVehicle" method="post">
+                            <input type="hidden" asp-for="VehicleID" />
+                            <input type="hidden" asp-for="LastLocationUpdate" />
+
+                            <!-- Vehicle Name & Type -->
+                            <div class="row mb-3">
+                                <div class="col-md-6">
                                     <label asp-for="Name" class="form-label">Vehicle Name *</label>
-                                    <input asp-for="Name" class="form-control" required>
+                                    <input asp-for="Name" class="form-control form-control-lg" required>
                                     <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
+                                <div class="col-md-6">
                                     <label asp-for="Type" class="form-label">Vehicle Type *</label>
-                                    <select asp-for="Type" class="form-select" required>
+                                    <select asp-for="Type" class="form-select form-select-lg" required>
                                         <option value="">Select Type</option>
                                         <option value="CAR">Car</option>
                                         <option value="VAN">Van</option>
@@ -39,172 +42,67 @@
                                     <span asp-validation-for="Type" class="text-danger"></span>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label asp-for="Seats" class="form-label">Number of Seats *</label>
-                                    <input asp-for="Seats" type="number" class="form-control" min="1" max="50" required>
+                            <!-- Seats & Price -->
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label asp-for="Seats" class="form-label">Seats *</label>
+                                    <input asp-for="Seats" type="number" class="form-control form-control-lg" min="1" max="50" required>
                                     <span asp-validation-for="Seats" class="text-danger"></span>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
+                                <div class="col-md-6">
                                     <label asp-for="PricePerDay" class="form-label">Price per Day (Rs.) *</label>
-                                    <input asp-for="PricePerDay" type="number" class="form-control" min="0" step="0.01" required>
+                                    <input asp-for="PricePerDay" type="number" class="form-control form-control-lg" min="0" step="0.01" required>
                                     <span asp-validation-for="PricePerDay" class="text-danger"></span>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="mb-3">
-                            <label asp-for="ImageUrl" class="form-label">Image URL</label>
-                            <input asp-for="ImageUrl" class="form-control" placeholder="https://example.com/image.jpg">
-                            <span asp-validation-for="ImageUrl" class="text-danger"></span>
-                            <small class="form-text text-muted">Leave empty to use default image</small>
-                        </div>
+                            <!-- Image & Description -->
+                            <div class="mb-3">
+                                <label asp-for="ImageUrl" class="form-label">Image URL</label>
+                                <input asp-for="ImageUrl" class="form-control form-control-lg" placeholder="https://example.com/image.jpg">
+                                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                                <small class="text-muted">Leave empty to use default image</small>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Description" class="form-label">Description</label>
+                                <textarea asp-for="Description" class="form-control form-control-lg" rows="3" placeholder="Enter vehicle description..."></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
 
-                        <div class="mb-3">
-                            <label asp-for="Description" class="form-label">Description</label>
-                            <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter vehicle description..."></textarea>
-                            <span asp-validation-for="Description" class="text-danger"></span>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
+                            <!-- Location -->
+                            <div class="row mb-3">
+                                <div class="col-md-6">
                                     <label asp-for="Latitude" class="form-label">Latitude</label>
-                                    <input asp-for="Latitude" type="number" class="form-control" step="0.000001" placeholder="9.6615">
+                                    <input asp-for="Latitude" type="number" class="form-control form-control-lg" step="0.000001" placeholder="9.6615">
                                     <span asp-validation-for="Latitude" class="text-danger"></span>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
+                                <div class="col-md-6">
                                     <label asp-for="Longitude" class="form-label">Longitude</label>
-                                    <input asp-for="Longitude" type="number" class="form-control" step="0.000001" placeholder="80.0255">
+                                    <input asp-for="Longitude" type="number" class="form-control form-control-lg" step="0.000001" placeholder="80.0255">
                                     <span asp-validation-for="Longitude" class="text-danger"></span>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input asp-for="IsAvailable" class="form-check-input" type="checkbox">
-                                <label asp-for="IsAvailable" class="form-check-label">
+                            <!-- Availability Switch -->
+                            <div class="form-check form-switch mb-4">
+                                <input asp-for="IsAvailable" class="form-check-input" type="checkbox" id="availabilitySwitch">
+                                <label asp-for="IsAvailable" class="form-check-label" for="availabilitySwitch">
                                     Vehicle is available for booking
                                 </label>
                             </div>
-                        </div>
 
-                        <div class="d-flex gap-2">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save"></i> Update Vehicle
-                            </button>
-                            <a href="/Admin/Vehicles" class="btn btn-outline-secondary">
-                                <i class="fas fa-arrow-left"></i> Back to Vehicles
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>  *@
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <!-- Glassmorphic Card -->
-            <div class="card glass-card shadow-lg border-0 rounded-4">
-                <!-- Gradient Card Header -->
-                <div class="card-header text-gradient py-3">
-                    <h3 class="mb-0"><i class="fas fa-edit"></i> Edit Vehicle: @Model.Name</h3>
-                </div>
-
-                <div class="card-body p-4">
-                    <form asp-action="EditVehicle" method="post">
-                        <input type="hidden" asp-for="VehicleID" />
-                        <input type="hidden" asp-for="LastLocationUpdate" />
-
-                        <!-- Vehicle Name & Type -->
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label asp-for="Name" class="form-label">Vehicle Name *</label>
-                                <input asp-for="Name" class="form-control form-control-lg" required>
-                                <span asp-validation-for="Name" class="text-danger"></span>
+                            <!-- Buttons -->
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-gradient btn-lg">
+                                    <i class="fas fa-save"></i> Update Vehicle
+                                </button>
+                                <a href="/Admin/Vehicles" class="btn btn-outline-secondary btn-lg">
+                                    <i class="fas fa-arrow-left"></i> Back to Vehicles
+                                </a>
                             </div>
-                            <div class="col-md-6">
-                                <label asp-for="Type" class="form-label">Vehicle Type *</label>
-                                <select asp-for="Type" class="form-select form-select-lg" required>
-                                    <option value="">Select Type</option>
-                                    <option value="CAR">Car</option>
-                                    <option value="VAN">Van</option>
-                                    <option value="BUS">Bus</option>
-                                    <option value="JEEP">Jeep</option>
-                                </select>
-                                <span asp-validation-for="Type" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                        <!-- Seats & Price -->
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label asp-for="Seats" class="form-label">Seats *</label>
-                                <input asp-for="Seats" type="number" class="form-control form-control-lg" min="1" max="50" required>
-                                <span asp-validation-for="Seats" class="text-danger"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <label asp-for="PricePerDay" class="form-label">Price per Day (Rs.) *</label>
-                                <input asp-for="PricePerDay" type="number" class="form-control form-control-lg" min="0" step="0.01" required>
-                                <span asp-validation-for="PricePerDay" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                        <!-- Image & Description -->
-                        <div class="mb-3">
-                            <label asp-for="ImageUrl" class="form-label">Image URL</label>
-                            <input asp-for="ImageUrl" class="form-control form-control-lg" placeholder="https://example.com/image.jpg">
-                            <span asp-validation-for="ImageUrl" class="text-danger"></span>
-                            <small class="text-muted">Leave empty to use default image</small>
-                        </div>
-                        <div class="mb-3">
-                            <label asp-for="Description" class="form-label">Description</label>
-                            <textarea asp-for="Description" class="form-control form-control-lg" rows="3" placeholder="Enter vehicle description..."></textarea>
-                            <span asp-validation-for="Description" class="text-danger"></span>
-                        </div>
-
-                        <!-- Location -->
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label asp-for="Latitude" class="form-label">Latitude</label>
-                                <input asp-for="Latitude" type="number" class="form-control form-control-lg" step="0.000001" placeholder="9.6615">
-                                <span asp-validation-for="Latitude" class="text-danger"></span>
-                            </div>
-                            <div class="col-md-6">
-                                <label asp-for="Longitude" class="form-label">Longitude</label>
-                                <input asp-for="Longitude" type="number" class="form-control form-control-lg" step="0.000001" placeholder="80.0255">
-                                <span asp-validation-for="Longitude" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                        <!-- Availability Switch -->
-                        <div class="form-check form-switch mb-4">
-                            <input asp-for="IsAvailable" class="form-check-input" type="checkbox" id="availabilitySwitch">
-                            <label asp-for="IsAvailable" class="form-check-label" for="availabilitySwitch">
-                                Vehicle is available for booking
-                            </label>
-                        </div>
-
-                        <!-- Buttons -->
-                        <div class="d-flex gap-2">
-                            <button type="submit" class="btn btn-gradient btn-lg">
-                                <i class="fas fa-save"></i> Update Vehicle
-                            </button>
-                            <a href="/Admin/Vehicles" class="btn btn-outline-secondary btn-lg">
-                                <i class="fas fa-arrow-left"></i> Back to Vehicles
-                            </a>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -212,6 +110,11 @@
 </div>
 
 <style>
+    /* Background wrapper */
+    .edit-vehicle-bg { position: relative; min-height: 100vh; }
+    .edit-vehicle-bg .edit-overlay { content: ""; position: absolute; inset: 0; background: rgba(255,255,255,0.15); backdrop-filter: blur(2px); z-index: 0; }
+    .edit-vehicle-bg > .container { position: relative; z-index: 1; }
+
     /* Gradient card header */
     .text-gradient {
         background: linear-gradient(135deg, #06b6d4, #3b82f6);
@@ -227,108 +130,12 @@
         border: 1px solid rgba(255, 255, 255, 0.3);
         transition: all 0.3s ease-in-out;
     }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
+        .glass-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
 
     /* Gradient buttons */
-    .btn-gradient {
-        background: linear-gradient(135deg, #06b6d4, #3b82f6);
-        color: white;
-        border: none;
-        transition: 0.3s ease-in-out;
-    }
-
-        .btn-gradient:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
+    .btn-gradient { background: linear-gradient(135deg, #06b6d4, #3b82f6); color: white; border: none; transition: 0.3s ease-in-out; }
+    .btn-gradient:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
 
     /* Input focus */
-    .form-control:focus, .form-select:focus {
-        box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
-    }
-
-    /* Rounded badges */
-    .badge-pill {
-        border-radius: 50rem;
-        padding: 0.5em 0.75em;
-        font-size: 0.85rem;
-    }
-
-    body {
-    background: linear-gradient(135deg, #06b6d4, #3b82f6, #38bdf8, #06b6d4);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-}
-
-
-
-/* Card */
-.glass-card {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(18px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 2rem;
-    transition: all 0.4s ease-in-out;
-}
-.glass-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-}
-
-/* Floating input with inner shadow */
-.floating-input {
-    background: rgba(255,255,255,0.15);
-    border-radius: 0.8rem;
-    border: none;
-    padding: 1rem;
-    box-shadow: inset 3px 3px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(255,255,255,0.2);
-    transition: all 0.3s ease-in-out;
-}
-.floating-input:focus {
-    border: 2px solid #3b82f6;
-    box-shadow: inset 3px 3px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(255,255,255,0.2),
-                0 0 12px rgba(59,130,246,0.3);
-    background: rgba(255,255,255,0.25);
-}
-
-/* Animated floating labels */
-.form-floating > label {
-    transition: all 0.3s ease-in-out;
-    pointer-events: none;
-}
-.floating-input:placeholder-shown:not(:focus) + label {
-    transform: translateY(1rem);
-    font-size: 1rem;
-    color: #6c757d;
-}
-.floating-input:focus + label {
-    transform: translateY(-0.5rem) scale(0.9);
-    color: #3b82f6;
-    font-weight: 600;
-}
-
-/* Gradient Buttons with glow & hover scale */
-.btn-gradient {
-    background: linear-gradient(135deg, #06b6d4, #3b82f6, #38bdf8);
-    color: #fff;
-    font-weight: 600;
-    border-radius: 1rem;
-    border: none;
-    transition: all 0.3s ease-in-out;
-}
-.btn-gradient:hover {
-    transform: scale(1.08);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 0 15px rgba(59,130,246,0.4);
-}
-
-/* Switch toggle micro-interaction */
-.form-check-input:checked {
-    transform: scale(1.1);
-    transition: all 0.3s ease;
-    box-shadow: 0 0 8px rgba(59,130,246,0.4);
-}
+    .form-control:focus, .form-select:focus { box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25); }
 </style>
