@@ -3,188 +3,67 @@
     ViewData["Title"] = "Customer Registration";
 }
 
-@* 
-<section class="py-5" style="background: #f0f8ff;">
+<section class="py-5" style="background: linear-gradient(135deg, #f0faff, #dceefb);">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card shadow-lg rounded-4 border-0 hover-card">
-                    <!-- Gradient Header -->
-                    <div class="card-header bg-gradient text-white text-center rounded-top-4 py-3">
-                        <h3 class="mb-0">Customer Registration</h3>
+            <div class="col-md-7">
+                <div class="card shadow-lg rounded-4 border-0 hover-card border-glow">
+                    <!-- Header -->
+                    <div class="card-header bg-soft-gradient text-dark text-center rounded-top-4 py-3">
+                        <h3 class="mb-0 fw-bold">Create Your Account</h3>
+                        <p class="mb-0 text-muted small">Welcome! Let's get started </p>
                     </div>
 
-                    <!-- Card Body with Glass Inputs -->
-                    <div class="card-body">
+                    <!-- Form -->
+                    <div class="card-body px-4 py-4">
                         <form asp-action="Register" method="post">
                             <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                            <div class="mb-3">
-                                <label asp-for="Username" class="form-label">Username</label>
-                                <input asp-for="Username" class="form-control form-glass" />
-                                <span asp-validation-for="Username" class="text-danger"></span>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="PasswordHash" class="form-label">Password</label>
-                                <input asp-for="PasswordHash" type="password" class="form-control form-glass" />
-                                <span asp-validation-for="PasswordHash" class="text-danger"></span>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="FullName" class="form-label">Full Name</label>
-                                <input asp-for="FullName" class="form-control form-glass" />
-                                <span asp-validation-for="FullName" class="text-danger"></span>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="Email" class="form-label">Email</label>
-                                <input asp-for="Email" type="email" class="form-control form-glass" />
-                                <span asp-validation-for="Email" class="text-danger"></span>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
-                                <input asp-for="PhoneNumber" class="form-control form-glass" />
-                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="Address" class="form-label">Address</label>
-                                <textarea asp-for="Address" class="form-control form-glass" rows="3"></textarea>
-                                <span asp-validation-for="Address" class="text-danger"></span>
-                            </div>
-
-                            <!-- Gradient Button -->
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-gradient btn-lg">Register</button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Card Footer -->
-                    <div class="card-footer text-center bg-transparent border-0">
-                        <p>Already have an account? <a asp-action="Login" class="text-primary fw-bold">Login here</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<style>
-    /* Gradient Header */
-    .bg-gradient {
-        background: linear-gradient(135deg, #06b6d4, #3b82f6);
-    }
-
-    /* Glassmorphism Input Fields */
-    .form-glass {
-        background: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255,255,255,0.3);
-        backdrop-filter: blur(10px);
-        color: #000;
-        transition: all 0.3s ease-in-out;
-    }
-
-        .form-glass:focus {
-            background: rgba(255,255,255,0.25);
-            border-color: #06b6d4;
-            box-shadow: 0 0 10px rgba(6,182,212,0.5);
-            color: #000;
-        }
-
-    /* Gradient Button */
-    .btn-gradient {
-        background: linear-gradient(135deg, #06b6d4, #3b82f6);
-        color: #fff;
-        border: none;
-        transition: all 0.3s ease-in-out;
-    }
-
-        .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-    /* Card Hover Animation */
-    .hover-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        transition: all 0.3s ease-in-out;
-    }
-</style>
-
-
- *@
-
-<section class="py-5" style="background:  #e0f2fe;">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-8">
-                <div class="card shadow-lg rounded-4 border-0 hover-card overflow-hidden">
-
-                    <!-- Gradient Header -->
-                    <div class="card-header bg-gradient text-white text-center py-4 ">
-                        <h3 class="mb-0 fw-bold text-info">Customer Registration</h3>
-                    </div>
-
-                    <!-- Card Body -->
-                    <div class="card-body p-4">
-                        <form asp-action="Register" method="post">
-                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-
-                            <div class="mb-3">
-                                <label asp-for="Username" class="form-label fw-semibold">Username</label>
-                                <input asp-for="Username" class="form-control form-glass" placeholder="Enter username" />
+                            <div class="form-floating mb-3">
+                                <input asp-for="Username" class="form-control form-glass" placeholder="Username" />
+                                <label asp-for="Username">Username</label>
                                 <span asp-validation-for="Username" class="text-danger small"></span>
                             </div>
 
-                            <div class="mb-3">
-                                <label asp-for="PasswordHash" class="form-label fw-semibold">Password</label>
-                                <input asp-for="PasswordHash" type="password" class="form-control form-glass" placeholder="Enter password" />
+                            <div class="form-floating mb-3">
+                                <input asp-for="PasswordHash" type="password" class="form-control form-glass" placeholder="Password" />
+                                <label asp-for="PasswordHash">Password</label>
                                 <span asp-validation-for="PasswordHash" class="text-danger small"></span>
                             </div>
 
-                            <div class="mb-3">
-                                <label asp-for="FullName" class="form-label fw-semibold">Full Name</label>
-                                <input asp-for="FullName" class="form-control form-glass" placeholder="Enter full name" />
+                            <div class="form-floating mb-3">
+                                <input asp-for="FullName" class="form-control form-glass" placeholder="Full Name" />
+                                <label asp-for="FullName">Full Name</label>
                                 <span asp-validation-for="FullName" class="text-danger small"></span>
                             </div>
 
-                            <div class="mb-3">
-                                <label asp-for="Email" class="form-label fw-semibold">Email</label>
-                                <input asp-for="Email" type="email" class="form-control form-glass" placeholder="Enter email address" />
+                            <div class="form-floating mb-3">
+                                <input asp-for="Email" type="email" class="form-control form-glass" placeholder="Email" />
+                                <label asp-for="Email">Email</label>
                                 <span asp-validation-for="Email" class="text-danger small"></span>
                             </div>
 
-                            <div class="mb-3">
-                                <label asp-for="PhoneNumber" class="form-label fw-semibold">Phone Number</label>
-                                <input asp-for="PhoneNumber" class="form-control form-glass" placeholder="Enter phone number" />
+                            <div class="form-floating mb-3">
+                                <input asp-for="PhoneNumber" class="form-control form-glass" placeholder="Phone Number" />
+                                <label asp-for="PhoneNumber">Phone Number</label>
                                 <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
                             </div>
 
-                            <div class="mb-3">
-                                <label asp-for="Address" class="form-label fw-semibold">Address</label>
-                                <textarea asp-for="Address" class="form-control form-glass" rows="3" placeholder="Enter address"></textarea>
+                            <div class="form-floating mb-4">
+                                <textarea asp-for="Address" class="form-control form-glass" placeholder="Address" style="height: 100px;"></textarea>
+                                <label asp-for="Address">Address</label>
                                 <span asp-validation-for="Address" class="text-danger small"></span>
                             </div>
 
-                            <!-- Gradient Button -->
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-gradient btn-lg fw-semibold">
-                                    Register
-                                </button>
+                                <button type="submit" class="btn btn-fun btn-lg"> Register Now</button>
                             </div>
                         </form>
                     </div>
 
                     <!-- Footer -->
-                    <div class="card-footer text-center bg-light border-0 py-3">
-                        <p class="mb-0">
-                            Already have an account?
-                            <a asp-action="Login" class="fw-bold text-primary text-decoration-none">Login here</a>
-                        </p>
+                    <div class="card-footer text-center bg-transparent border-0">
+                        <p class="text-muted">Already registered? <a asp-action="Login" class="fw-bold text-fun">Log in here</a></p>
                     </div>
                 </div>
             </div>
@@ -192,50 +71,76 @@
     </div>
 </section>
 
+<!-- CSS Styling -->
 <style>
-    /* Gradient Header */
-    .bg-gradient {
-        background: linear-gradient(135deg, #0ea5e9, #2563eb);
+    body {
+        background: #f0faff;
+        font-family: 'Segoe UI', sans-serif;
     }
 
-    /* Glassmorphism Inputs */
+    .bg-soft-gradient {
+        background: linear-gradient(to right, #cfe9ff, #a5d8ff);
+    }
+
     .form-glass {
-        background: rgba(255, 255, 255, 0.25);
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(8px);
-        border-radius: 10px;
-        transition: all 0.3s ease-in-out;
+        background: rgba(255, 255, 255, 0.5);
+        border: 2px solid #cfe3f3;
+        backdrop-filter: blur(12px);
+        color: #333;
+        border-radius: 12px;
+        transition: 0.3s ease;
     }
 
         .form-glass:focus {
-            background: rgba(255, 255, 255, 0.35);
-            border-color: #0ea5e9;
-            box-shadow: 0 0 12px rgba(14,165,233,0.4);
+            background: rgba(255,255,255,0.65);
+            border-color: #3b82f6;
+            box-shadow: 0 0 10px rgba(59,130,246,0.3);
+            color: #000;
         }
 
-    /* Gradient Button */
-    .btn-gradient {
-        background: linear-gradient(135deg, #0ea5e9, #2563eb);
+    .btn-fun {
+        background: linear-gradient(to right, #3b82f6, #2563eb);
         color: #fff;
-        border-radius: 10px;
         border: none;
-        transition: all 0.3s ease-in-out;
+        border-radius: 50px;
+        transition: 0.4s ease;
     }
 
-        .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        .btn-fun:hover {
+            box-shadow: 0 8px 25px rgba(59,130,246,0.3);
+            transform: scale(1.03);
         }
 
-    /* Hover Card */
     .hover-card {
-        transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease;
     }
 
         .hover-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
         }
+
+    .border-glow {
+        border: 2px solid transparent;
+        background-image: linear-gradient(white, white), linear-gradient(135deg, #3b82f6, #2563eb);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        border-radius: 20px;
+    }
+
+    .text-fun {
+        color: #2563eb;
+    }
+
+        .text-fun:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+    .form-floating > .form-control:focus ~ label,
+    .form-floating > .form-control:not(:placeholder-shown) ~ label {
+        opacity: 0.85;
+        transform: scale(0.85) translateY(-1.5rem) translateX(0.15rem);
+        color: #2563eb;
+    }
 </style>
-
-

@@ -2,38 +2,120 @@
     ViewData["Title"] = "Customer Login";
 }
 
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="text-center">Customer Login</h3>
-                </div>
-                <div class="card-body">
-                    <form asp-action="Login" method="post">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" name="username" id="username" class="form-control" required />
-                        </div>
+<section class="py-5" style="background: linear-gradient(135deg, #f0faff, #dceefb);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card shadow-lg rounded-4 border-0 hover-card border-glow">
+                    <!-- Header -->
+                    <div class="card-header bg-soft-gradient text-dark text-center rounded-top-4 py-3">
+                        <h3 class="fw-bold mb-0">Welcome Back!</h3>
+                        <p class="text-muted small mb-0">Login to your account </p>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" id="password" class="form-control" required />
-                        </div>
+                    <!-- Body -->
+                    <div class="card-body px-4 py-4">
+                        <form asp-action="Login" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Login</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-footer text-center">
-                    <p>Don't have an account? <a asp-action="Register">Register here</a></p>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="username" id="username" class="form-control form-glass" placeholder="Username" required />
+                                <label for="username">Username</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                <input type="password" name="password" id="password" class="form-control form-glass" placeholder="Password" required />
+                                <label for="password">Password</label>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-fun btn-lg"> Login</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="card-footer text-center bg-transparent border-0">
+                        <p class="text-muted mb-0">
+                            Don't have an account?
+                            <a asp-action="Register" class="fw-bold text-fun">Register here</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 
+<style>
+    body {
+        background: #f0faff;
+        font-family: 'Segoe UI', sans-serif;
+    }
 
+    .bg-soft-gradient {
+        background: linear-gradient(to right, #cfe9ff, #a5d8ff);
+    }
+
+    .form-glass {
+        background: rgba(255, 255, 255, 0.5);
+        border: 2px solid #cfe3f3;
+        backdrop-filter: blur(12px);
+        color: #333;
+        border-radius: 12px;
+        transition: 0.3s ease;
+    }
+
+        .form-glass:focus {
+            background: rgba(255,255,255,0.65);
+            border-color: #3b82f6;
+            box-shadow: 0 0 10px rgba(59,130,246,0.3);
+            color: #000;
+        }
+
+    .btn-fun {
+        background: linear-gradient(to right, #3b82f6, #2563eb);
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        transition: 0.4s ease;
+    }
+
+        .btn-fun:hover {
+            box-shadow: 0 8px 25px rgba(59,130,246,0.3);
+            transform: scale(1.03);
+        }
+
+    .hover-card {
+        transition: all 0.3s ease;
+    }
+
+        .hover-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        }
+
+    .border-glow {
+        border: 2px solid transparent;
+        background-image: linear-gradient(white, white), linear-gradient(135deg, #3b82f6, #2563eb);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        border-radius: 20px;
+    }
+
+    .text-fun {
+        color: #2563eb;
+    }
+
+        .text-fun:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+    .form-floating > .form-control:focus ~ label,
+    .form-floating > .form-control:not(:placeholder-shown) ~ label {
+        opacity: 0.85;
+        transform: scale(0.85) translateY(-1.5rem) translateX(0.15rem);
+        color: #2563eb;
+    }
+</style>
