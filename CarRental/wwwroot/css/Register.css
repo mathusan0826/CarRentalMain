@@ -1,0 +1,51 @@
+﻿/*body {*/
+    
+    /* Gradient Header */
+    /*.bg-gradient
+
+{
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+}*/
+
+/* Glassmorphism Input Fields */
+/*.form-glass {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(10px);
+    color: #000;
+    transition: all 0.3s ease-in-out;
+}
+
+    .form-glass:focus {
+        background: rgba(255,255,255,0.25);
+        border-color: #06b6d4;
+        box-shadow: 0 0 10px rgba(6,182,212,0.5);
+        color: #000;
+    }*/
+
+/* Gradient Button */
+/*.btn-gradient {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+    .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }*/
+
+/* Card Hover Animation */
+/*.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+
+
+
+}*/
