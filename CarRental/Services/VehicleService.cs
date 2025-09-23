@@ -75,5 +75,15 @@ namespace CarRental.Services
                 .Where(v => v.IsAvailable)
                 .ToListAsync();
         }
+
+        public async Task<bool> SetAvailabilityAsync(int vehicleId, bool isAvailable)
+        {
+            var vehicle = await _context.Vehicles.FindAsync(vehicleId);
+            if (vehicle == null)
+                return false;
+            vehicle.IsAvailable = isAvailable;
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 } 

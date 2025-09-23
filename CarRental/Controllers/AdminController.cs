@@ -189,6 +189,17 @@ namespace CarRental.Controllers
             {
                 booking.Status = status;
                 await _bookingService.UpdateBookingAsync(booking);
+
+                if (status == "Approved")
+                {
+                    await _vehicleService.SetAvailabilityAsync(booking.VehicleID, false);
+                }
+
+                if (status == "Rejected")
+                {
+                    await _vehicleService.SetAvailabilityAsync(booking.VehicleID, true);
+                }
+
             }
 
             return RedirectToAction(nameof(Bookings));
@@ -222,6 +233,15 @@ namespace CarRental.Controllers
             {
                 booking.Status = status;
                 await _bookingService.UpdateBookingAsync(booking);
+
+                if (status == "Rented")
+                {
+                    await _vehicleService.SetAvailabilityAsync(booking.VehicleID, false);
+                }
+                else if( status == "Returned" || status == "Completed" || status == "Cancelled")
+                {
+                    await _vehicleService.SetAvailabilityAsync(booking.VehicleID, true);
+                }
             }
 
             return RedirectToAction(nameof(Rentals));

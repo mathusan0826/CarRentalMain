@@ -12,5 +12,6 @@ namespace CarRental.Services
         Task<bool> DeleteVehicleAsync(int id);
         Task<bool> UpdateVehicleLocationAsync(int vehicleId, double latitude, double longitude);
         Task<IEnumerable<Vehicle>> GetAvailableVehiclesAsync();
+        Task<bool> SetAvailabilityAsync(int vehicleId, bool isAvailable);
     }
 } 

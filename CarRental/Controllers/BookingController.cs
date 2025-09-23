@@ -42,6 +42,12 @@ namespace CarRental.Controllers
                 return NotFound();
             }
 
+            if (!vehicle.IsAvailable)
+            {
+                TempData["VehicleUnavailable"] = "Sorry, this vehicle is currently not available.";
+                return RedirectToAction("Details", "Vehicle", new {id=vehicleId});
+            }
+
             var booking = new Booking
             {
                 VehicleID = vehicleId,
@@ -94,6 +100,14 @@ namespace CarRental.Controllers
             {
                 try
                 {
+                    var currentvehicle = await _vehicleService.GetVehicleByIdAsync(booking.VehicleID);
+                    if (currentvehicle == null)
+                    {
+                        ModelState.AddModelError(string.Empty, "The selected vehicle is not available right now.");
+                        ViewBag.Vehicle = currentvehicle;
+                        ViewBag.IsCustomerLoggedIn = HttpContext.Session.GetString("CustomerRole") == "Customer";
+                        return View(booking);
+                    }
                     await _bookingService.CreateBookingAsync(booking);
                     return RedirectToAction(nameof(Success), new { bookingId = booking.BookingID });
                 }
