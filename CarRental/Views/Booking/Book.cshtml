@@ -14,6 +14,20 @@
                     </h3>
                 </div>
                 <div class="card-body">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    @if (TempData["DebugInfo"] != null)
+                    {
+                        <div class="alert alert-info">
+                            <strong>Debug Info:</strong> @TempData["DebugInfo"]
+                        </div>
+                    }
+                    @if (TempData["ValidationErrors"] != null)
+                    {
+                        <div class="alert alert-warning">
+                            <strong>Validation Errors:</strong> @TempData["ValidationErrors"]
+                        </div>
+                    }
+"])
                     <!-- Vehicle Summary -->
                     @if (vehicle != null)
                     {
@@ -41,7 +55,7 @@
 
                     <!-- Booking Form -->
                     <form asp-action="Book" method="post" id="bookingForm">
-                        <input type="hidden" asp-for="VehicleID" />
+                        <input type="hidden" asp-for="VehicleID" value="@Model.VehicleID" name="VehicleID" />
                         
                         <div class="row">
                             <div class="col-md-6">
@@ -140,7 +154,7 @@
                         </div>
 
                         <div class="d-flex gap-2">
-                            <button type="button" class="btn btn-success btn-lg" id="confirmBookingBtn">
+                            <button type="submit" class="btn btn-success btn-lg" id="confirmBookingBtn">
                                 <i class="fas fa-check"></i> Confirm Booking
                             </button>
                             <a href="/Vehicle/Details/@Model.VehicleID" class="btn btn-outline-secondary btn-lg">
@@ -182,16 +196,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Auth guard for Confirm Booking
-document.getElementById('confirmBookingBtn').addEventListener('click', function () {
-    const isLoggedIn = @((ViewBag.IsCustomerLoggedIn ?? false) ? "true" : "false");
-    if (isLoggedIn === true || isLoggedIn === "true") {
-        document.getElementById('bookingForm').submit();
-        return;
-    }
+// document.getElementById('confirmBookingBtn').addEventListener('click', function () {
+//     const isLoggedIn = @((ViewBag.IsCustomerLoggedIn ?? false) ? "true" : "false");
+//     if (isLoggedIn === true || isLoggedIn === "true") {
+//         document.getElementById('bookingForm').submit();
+//         return;
+//     }
 
-    const authModal = new bootstrap.Modal(document.getElementById('authRequiredModal'));
-    authModal.show();
-});
+//     const authModal = new bootstrap.Modal(document.getElementById('authRequiredModal'));
+//     authModal.show();
+// });
 </script> 
 
 <!-- Auth Required Modal -->

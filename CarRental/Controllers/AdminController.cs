@@ -194,6 +194,39 @@ namespace CarRental.Controllers
             return RedirectToAction(nameof(Bookings));
         }
 
+        public async Task<IActionResult> Rentals()
+        {
+            if (!IsAdminLoggedIn())
+            {
+                return RedirectToAction(nameof(Login));
+            }
+
+            // Get approved bookings for rental management
+            var approvedBookings = await _bookingService.GetAllBookingsAsync();
+            var rentals = approvedBookings.Where(b => b.Status == "Approved").ToList();
+            
+            return View(rentals);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateRentalStatus(int bookingId, string status)
+        {
+            if (!IsAdminLoggedIn())
+            {
+                return RedirectToAction(nameof(Login));
+            }
+
+            var booking = await _bookingService.GetBookingByIdAsync(bookingId);
+            if (booking != null)
+            {
+                booking.Status = status;
+                await _bookingService.UpdateBookingAsync(booking);
+            }
+
+            return RedirectToAction(nameof(Rentals));
+        }
+
         public IActionResult ContactMessages()
         {
             if (!IsAdminLoggedIn())

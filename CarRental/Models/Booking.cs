@@ -6,7 +6,7 @@ namespace CarRental.Models
     {
         public int BookingID { get; set; }
         
-        [Required]
+       
         public int VehicleID { get; set; }
         
         public int? CustomerID { get; set; }
@@ -16,7 +16,7 @@ namespace CarRental.Models
         public string CustomerName { get; set; } = string.Empty;
         
         [Required]
-        [StringLength(20)]
+        [StringLength(10)]
         public string Phone { get; set; } = string.Empty;
         
         [Required]
@@ -40,7 +40,7 @@ namespace CarRental.Models
         public decimal TotalAmount { get; set; }
         
         
-        public virtual Vehicle Vehicle { get; set; } = null!;
+        public virtual Vehicle Vehicle { get; set; }
         public virtual Customer? Customer { get; set; }
         //git Gajan pull checking 
         

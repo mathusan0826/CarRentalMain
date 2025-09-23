@@ -1,0 +1,131 @@
+﻿/*body {
+    <style>*/
+    /* Gradient card header */
+    /*.text-gradient
+
+{
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}*/
+
+/* Glassmorphic card */
+/*.glass-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+    .glass-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }*/
+
+/* Gradient buttons */
+/*.btn-gradient {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+    color: white;
+    border: none;
+    transition: 0.3s ease-in-out;
+}
+
+    .btn-gradient:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }*/
+
+/* Input focus */
+/*.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+}*/
+
+/* Rounded badges */
+/*.badge-pill {
+    border-radius: 50rem;
+    padding: 0.5em 0.75em;
+    font-size: 0.85rem;
+}
+
+body {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6, #38bdf8, #06b6d4);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}*/
+
+
+
+/* Card */
+/*.glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 2rem;
+    transition: all 0.4s ease-in-out;
+}
+
+    .glass-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+    }*/
+
+/* Floating input with inner shadow */
+/*.floating-input {
+    background: rgba(255,255,255,0.15);
+    border-radius: 0.8rem;
+    border: none;
+    padding: 1rem;
+    box-shadow: inset 3px 3px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(255,255,255,0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+    .floating-input:focus {
+        border: 2px solid #3b82f6;
+        box-shadow: inset 3px 3px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(255,255,255,0.2), 0 0 12px rgba(59,130,246,0.3);
+        background: rgba(255,255,255,0.25);
+    }*/
+
+/* Animated floating labels */
+/*.form-floating > label {
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+}
+
+.floating-input:placeholder-shown:not(:focus) + label {
+    transform: translateY(1rem);
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.floating-input:focus + label {
+    transform: translateY(-0.5rem) scale(0.9);
+    color: #3b82f6;
+    font-weight: 600;
+}*/
+
+/* Gradient Buttons with glow & hover scale */
+/*.btn-gradient {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6, #38bdf8);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 1rem;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+    .btn-gradient:hover {
+        transform: scale(1.08);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 0 15px rgba(59,130,246,0.4);
+    }*/
+
+/* Switch toggle micro-interaction */
+/*.form-check-input:checked {
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px rgba(59,130,246,0.4);
+}
+
+</style >
+
+}*/

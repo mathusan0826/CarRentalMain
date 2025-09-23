@@ -1,6 +1,6 @@
-﻿@model IEnumerable<CarRental.Models.Booking>
+@model IEnumerable<CarRental.Models.Booking>
 @{
-    ViewData["Title"] = "Manage Bookings";
+    ViewData["Title"] = "Manage Rentals";
     Layout = "_AdminLayout";
 }
 
@@ -8,14 +8,12 @@
 <div class="dashboard-hero text-white d-flex align-items-center mb-4">
     <div class="container">
         <h1 class="mb-0">
-            <i class="fas fa-calendar-check"></i> Manage Bookings
+            <i class="fas fa-key"></i> Manage Rentals
         </h1>
     </div>
 </div>
 
 <div class="container-fluid py-4 dashboard-bg">
-
-
     <!-- Glassmorphic Card -->
     <div class="card glass-card shadow-lg border-0 rounded-4">
         <div class="card-body p-4">
@@ -24,12 +22,12 @@
                     <thead class="table-header text-white text-center">
                         <tr>
                             <th><i class="fas fa-hashtag"></i> ID</th>
-                            <th><i class="fas fa-user"></i> Customer</th>
+                            <th><i class="fas fa-user"></i> Customer Details</th>
                             <th><i class="fas fa-car"></i> Vehicle</th>
                             <th><i class="fas fa-calendar-day"></i> Pick-up</th>
                             <th><i class="fas fa-clock"></i> Days</th>
                             <th><i class="fas fa-money-bill-wave"></i> Amount</th>
-                            <th><i class="fas fa-flag"></i> Status</th>
+                            <th><i class="fas fa-flag"></i> Rental Status</th>
                             <th><i class="fas fa-calendar-plus"></i> Booked At</th>
                             <th><i class="fas fa-cogs"></i> Actions</th>
                         </tr>
@@ -37,50 +35,47 @@
                     <tbody>
                         @if (Model != null && Model.Any())
                         {
-                            @foreach (var booking in Model)
+                            @foreach (var rental in Model)
                             {
                                 <tr>
-                                    <td class="fw-bold">#@booking.BookingID</td>
+                                    <td class="fw-bold">#@rental.BookingID</td>
                                     <td>
-                                        <span class="badge bg-light text-dark px-3 py-2 rounded-pill shadow-sm">
-                                            @booking.CustomerName
-                                        </span><br />
-                                        <small class="text-muted">
-                                            <i class="fas fa-phone"></i> @booking.Phone <br />
-                                            <a href="mailto:@booking.Email" class="email-link">
-                                                <i class="fas fa-envelope"></i> @booking.Email
-                                            </a>
-                                        </small>
+                                        <div class="customer-details">
+                                            <span class="badge bg-light text-dark px-3 py-2 rounded-pill shadow-sm">
+                                                <strong>@rental.CustomerName</strong>
+                                            </span><br />
+                                            <small class="text-muted">
+                                                <i class="fas fa-phone"></i> @rental.Phone <br />
+                                                <a href="mailto:@rental.Email" class="email-link">
+                                                    <i class="fas fa-envelope"></i> @rental.Email
+                                                </a>
+                                            </small>
+                                        </div>
                                     </td>
                                     <td>
-                                        <strong>@booking.Vehicle.Name</strong><br />
-                                        <span class="badge bg-primary">@booking.Vehicle.Type</span>
-                                        <span class="badge bg-secondary">@booking.Vehicle.Seats seats</span>
+                                        <strong>@rental.Vehicle.Name</strong><br />
+                                        <span class="badge bg-primary">@rental.Vehicle.Type</span>
+                                        <span class="badge bg-secondary">@rental.Vehicle.Seats seats</span>
                                     </td>
-                                    <td>@booking.PickupDate.ToString("MMM dd, yyyy")</td>
-                                    <td>@booking.RentalDays days</td>
-                                    <td><strong>Rs. @booking.TotalAmount.ToString("N0")</strong></td>
+                                    <td>@rental.PickupDate.ToString("MMM dd, yyyy")</td>
+                                    <td>@rental.RentalDays days</td>
+                                    <td><strong>Rs. @rental.TotalAmount.ToString("N0")</strong></td>
                                     <td>
-                                        <span class="badge @(booking.Status switch {
-                                            "Pending" => "bg-warning text-dark",
+                                        <span class="badge @(rental.Status switch {
                                             "Approved" => "bg-success",
-                                            "Rejected" => "bg-danger",
                                             "Rented" => "bg-primary",
                                             "Returned" => "bg-info text-dark",
                                             "Overdue" => "bg-danger",
-                                            "Confirmed" => "bg-primary",
-                                            "Completed" => "bg-info text-dark",
-                                            "Cancelled" => "bg-secondary",
                                             _ => "bg-secondary"
                                         }) px-3 py-2 rounded-pill">
-                                            @booking.Status
+                                            @rental.Status
                                         </span>
                                     </td>
-                                    <td>@booking.BookingDate.ToString("MMM dd, HH:mm")</td>
+                                    <td>@rental.BookingDate.ToString("MMM dd, HH:mm")</td>
                                     <td>
                                         <div class="btn-group" role="group">
                                             <button type="button" class="btn btn-sm btn-outline-primary" 
-                                                    data-bs-toggle="modal" data-bs-target="#bookingModal@(booking.BookingID)">
+                                                    data-bs-toggle="modal" data-bs-target="#rentalModal@(rental.BookingID)">
                                                 <i class="fas fa-eye"></i>
                                             </button>
                                             <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" 
@@ -89,22 +84,32 @@
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <form method="post" action="/Admin/UpdateBookingStatus">
+                                                    <form method="post" action="/Admin/UpdateRentalStatus">
                                                         @Html.AntiForgeryToken()
-                                                        <input type="hidden" name="bookingId" value="@booking.BookingID" />
-                                                        <input type="hidden" name="status" value="Approved" />
+                                                        <input type="hidden" name="bookingId" value="@rental.BookingID" />
+                                                        <input type="hidden" name="status" value="Rented" />
                                                         <button type="submit" class="dropdown-item">
-                                                            <i class="fas fa-check-circle text-success"></i> Approve
+                                                            <i class="fas fa-key text-primary"></i> Mark as Rented
                                                         </button>
                                                     </form>
                                                 </li>
                                                 <li>
-                                                    <form method="post" action="/Admin/UpdateBookingStatus">
+                                                    <form method="post" action="/Admin/UpdateRentalStatus">
                                                         @Html.AntiForgeryToken()
-                                                        <input type="hidden" name="bookingId" value="@booking.BookingID" />
-                                                        <input type="hidden" name="status" value="Rejected" />
+                                                        <input type="hidden" name="bookingId" value="@rental.BookingID" />
+                                                        <input type="hidden" name="status" value="Returned" />
                                                         <button type="submit" class="dropdown-item">
-                                                            <i class="fas fa-times-circle text-danger"></i> Reject
+                                                            <i class="fas fa-undo text-info"></i> Mark as Returned
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                                <li>
+                                                    <form method="post" action="/Admin/UpdateRentalStatus">
+                                                        @Html.AntiForgeryToken()
+                                                        <input type="hidden" name="bookingId" value="@rental.BookingID" />
+                                                        <input type="hidden" name="status" value="Overdue" />
+                                                        <button type="submit" class="dropdown-item">
+                                                            <i class="fas fa-exclamation-triangle text-warning"></i> Mark as Overdue
                                                         </button>
                                                     </form>
                                                 </li>
@@ -119,7 +124,7 @@
                             <tr>
                                 <td colspan="9" class="text-center text-muted py-5">
                                     <i class="fas fa-inbox fa-2x mb-3"></i><br />
-                                    No bookings available.
+                                    No approved rentals available.
                                 </td>
                             </tr>
                         }
@@ -176,6 +181,11 @@
         vertical-align: middle;
         text-align: center;
         border: none !important;
+    }
+
+    /* Customer Details Styling */
+    .customer-details {
+        text-align: left;
     }
 
     /* Email Styling */
