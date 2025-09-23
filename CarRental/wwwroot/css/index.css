@@ -1,0 +1,71 @@
+﻿/*body {
+    <!-- VEHICLES SECTION STYLES -->
+    
+    /* Glass card effect */
+    /*.glass-card
+
+{
+    background: rgba(255, 255, 255, 0.7);*/ /* Increased white for contrast */
+    /*border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: black;
+}*/
+
+/* 3D hover effect */
+/*.hover-3d:hover {
+    transform: rotateX(4deg) rotateY(4deg) scale(1.03);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+}*/
+
+/* Image Zoom */
+/*.vehicle-card img {
+    transition: transform 0.4s ease;
+}
+
+.vehicle-card:hover img {
+    transform: scale(1.05);
+}*/
+
+/* Title underline animation */
+/*.vehicle-card .card-title {
+    position: relative;
+    display: inline-block;
+}
+
+    .vehicle-card .card-title::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        height: 2px;
+        width: 100%;
+        background-color: #0d6efd;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+    }
+
+.vehicle-card:hover .card-title::after {
+    transform: scaleX(1);
+}*/
+
+/* Button Hover */
+/*.vehicle-card .btn-primary {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+    .vehicle-card .btn-primary:hover {
+        background-color: #0b5ed7;
+        transform: scale(1.05);
+    }*/
+
+/* Outline Button Hover */
+/*.btn-outline-dark:hover {
+    background-color: black;
+    color: white;
+}
+
+
+}*/
