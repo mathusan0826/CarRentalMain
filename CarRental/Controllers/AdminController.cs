@@ -212,7 +212,7 @@ namespace CarRental.Controllers
                 return RedirectToAction(nameof(Login));
             }
 
-            // Get approved bookings for rental management
+            //  bookings approve for rental management
             var approvedBookings = await _bookingService.GetAllBookingsAsync();
             var rentals = approvedBookings.Where(b => b.Status == "Approved").ToList();
             
@@ -254,7 +254,7 @@ namespace CarRental.Controllers
             var messages = _context.ContactMessages.OrderByDescending(m => m.SentAt).ToList();
             return View(messages);
         }
-        //
+        
         private bool IsAdminLoggedIn()
         {
             return !string.IsNullOrEmpty(HttpContext.Session.GetString("AdminUsername"));

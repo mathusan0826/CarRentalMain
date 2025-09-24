@@ -78,10 +78,10 @@ namespace CarRental.Controllers
                 booking.CustomerID = customerId.Value;
             }
 
-            //Ensure VehicleID is set New code jana
+            //chack VehicleID 
             if (booking.VehicleID == 0)
             {
-                //ModelState.AddModelError("VehicleID", "Vehicle selection is required.");
+                //Vehicle selection is required
                 if (RouteData.Values.ContainsKey("id"))
                 {
                     int.TryParse(RouteData.Values["id"].ToString(), out int vehicleId);
