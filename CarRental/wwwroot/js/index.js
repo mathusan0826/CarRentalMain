@@ -1,4 +1,4 @@
-﻿//<script>
+﻿
 //    function searchVehicles() {
 //        const type = document.getElementById('vehicleType').value;
 //    const seats = document.getElementById('seats').value;
@@ -13,4 +13,3 @@
 
 //    window.location.href = url;
 //    }
-//</script>

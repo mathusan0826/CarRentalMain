@@ -42,7 +42,7 @@ namespace CarRental.Models
         
         public virtual Vehicle Vehicle { get; set; }
         public virtual Customer? Customer { get; set; }
-        //git Gajan pull checking 
+        
         
     }
 } 
