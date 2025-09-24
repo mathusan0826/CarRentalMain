@@ -33,24 +33,7 @@ namespace CarRental.Controllers
             return View(new ContactMessage());
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Contact(ContactMessage message)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        _context.ContactMessages.Add(message);
-        //        _context.SaveChanges();
-        //        TempData["ContactSuccess"] = "Your message has been sent!";
-        //        return RedirectToAction("Contact");
-        //    }
-        //    return View(message);
-        //}
-
-        //public IActionResult Error()
-        //{
-        //    return View();
-        //}
+  
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Contact(ContactMessage model)

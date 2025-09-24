@@ -1,4 +1,4 @@
-﻿//<script>
+﻿
 //// Calculate total amount when rental days change
 //    document.getElementById('RentalDays').addEventListener('input', function() {
 //        calculateTotal();
@@ -36,4 +36,3 @@
 //    const authModal = new bootstrap.Modal(document.getElementById('authRequiredModal'));
 //    authModal.show();
 //});
-//</script> 
